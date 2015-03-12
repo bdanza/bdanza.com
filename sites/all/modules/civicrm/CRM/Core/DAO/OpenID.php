@@ -152,22 +152,26 @@ class CRM_Core_DAO_OpenID extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Unique OpenID ID',
           'required' => true,
         ) ,
         'contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to Contact ID',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'location_type_id' => array(
           'name' => 'location_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('OpenID Location Type') ,
+          'description' => 'Which Location does this email belong to.',
         ) ,
         'openid' => array(
           'name' => 'openid',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('OpenID') ,
+          'description' => 'the OpenID (or OpenID-style http://username.domain/) unique identifier for this contact mainly used for logging in to CiviCRM',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -181,12 +185,14 @@ class CRM_Core_DAO_OpenID extends CRM_Core_DAO
           'name' => 'allowed_to_login',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Allowed To Login') ,
+          'description' => 'Whether or not this user is allowed to login',
           'required' => true,
         ) ,
         'is_primary' => array(
           'name' => 'is_primary',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is OpenID Primary?') ,
+          'description' => 'Is this the primary email for this contact and location.',
         ) ,
       );
     }

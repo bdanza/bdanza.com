@@ -220,12 +220,14 @@ class CRM_Batch_DAO_Batch extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Batch ID') ,
+          'description' => 'Unique Address ID',
           'required' => true,
         ) ,
         'name' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Batch Name') ,
+          'description' => 'Variable name/programmatic handle for this batch.',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'html' => array(
@@ -236,6 +238,7 @@ class CRM_Batch_DAO_Batch extends CRM_Core_DAO
           'name' => 'title',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Batch Title') ,
+          'description' => 'Friendly Name.',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'html' => array(
@@ -246,6 +249,7 @@ class CRM_Batch_DAO_Batch extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Batch Description') ,
+          'description' => 'Description of this batch set.',
           'rows' => 4,
           'cols' => 80,
           'html' => array(
@@ -256,12 +260,14 @@ class CRM_Batch_DAO_Batch extends CRM_Core_DAO
           'name' => 'created_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Batch Created By') ,
+          'description' => 'FK to Contact ID',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'created_date' => array(
           'name' => 'created_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Batch Created Date') ,
+          'description' => 'When was this item created',
           'html' => array(
             'type' => 'Select Date',
           ) ,
@@ -270,17 +276,20 @@ class CRM_Batch_DAO_Batch extends CRM_Core_DAO
           'name' => 'modified_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Batch Modified By') ,
+          'description' => 'FK to Contact ID',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'modified_date' => array(
           'name' => 'modified_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Batch Modified Date') ,
+          'description' => 'When was this item created',
         ) ,
         'saved_search_id' => array(
           'name' => 'saved_search_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Batch Smart Group') ,
+          'description' => 'FK to Saved Search ID',
           'FKClassName' => 'CRM_Contact_DAO_SavedSearch',
           'html' => array(
             'type' => 'Autocomplete-Select',
@@ -290,40 +299,47 @@ class CRM_Batch_DAO_Batch extends CRM_Core_DAO
           'name' => 'status_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Batch Status') ,
+          'description' => 'fk to Batch Status options in civicrm_option_values',
           'required' => true,
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'batch_status',
+            'optionEditPath' => 'civicrm/admin/options/batch_status',
           )
         ) ,
         'type_id' => array(
           'name' => 'type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Batch Type') ,
+          'description' => 'fk to Batch Type options in civicrm_option_values',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'batch_type',
+            'optionEditPath' => 'civicrm/admin/options/batch_type',
           )
         ) ,
         'mode_id' => array(
           'name' => 'mode_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Batch Mode') ,
+          'description' => 'fk to Batch mode options in civicrm_option_values',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'batch_mode',
+            'optionEditPath' => 'civicrm/admin/options/batch_mode',
           )
         ) ,
         'total' => array(
           'name' => 'total',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Batch Total') ,
+          'description' => 'Total amount for this batch.',
           'precision' => array(
             20,
             2
@@ -336,6 +352,7 @@ class CRM_Batch_DAO_Batch extends CRM_Core_DAO
           'name' => 'item_count',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Batch Number of Items') ,
+          'description' => 'Number of items in a batch.',
           'html' => array(
             'type' => 'Text',
           ) ,
@@ -344,11 +361,13 @@ class CRM_Batch_DAO_Batch extends CRM_Core_DAO
           'name' => 'payment_instrument_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Batch Payment Instrument') ,
+          'description' => 'fk to Payment Instrument options in civicrm_option_values',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'payment_instrument',
+            'optionEditPath' => 'civicrm/admin/options/payment_instrument',
           )
         ) ,
         'exported_date' => array(
@@ -360,6 +379,7 @@ class CRM_Batch_DAO_Batch extends CRM_Core_DAO
           'name' => 'data',
           'type' => CRM_Utils_Type::T_LONGTEXT,
           'title' => ts('Batch Data') ,
+          'description' => 'cache entered data',
         ) ,
       );
     }

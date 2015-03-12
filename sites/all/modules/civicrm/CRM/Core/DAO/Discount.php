@@ -154,24 +154,28 @@ class CRM_Core_DAO_Discount extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'primary key',
           'required' => true,
         ) ,
         'entity_table' => array(
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Table') ,
+          'description' => 'physical tablename for entity being joined to discount, e.g. civicrm_event',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
         'entity_id' => array(
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to entity table specified in entity_table column.',
           'required' => true,
         ) ,
         'participant_discount_name' => array(
           'name' => 'price_set_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Discount Name') ,
+          'description' => 'FK to civicrm_price_set',
           'required' => true,
           'export' => true,
           'where' => 'civicrm_discount.price_set_id',
@@ -183,11 +187,13 @@ class CRM_Core_DAO_Discount extends CRM_Core_DAO
           'name' => 'start_date',
           'type' => CRM_Utils_Type::T_DATE,
           'title' => ts('Start Date') ,
+          'description' => 'Date when discount starts.',
         ) ,
         'end_date' => array(
           'name' => 'end_date',
           'type' => CRM_Utils_Type::T_DATE,
           'title' => ts('End Date') ,
+          'description' => 'Date when discount ends.',
         ) ,
       );
     }

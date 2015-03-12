@@ -232,12 +232,14 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Report Instance ID') ,
+          'description' => 'Report Instance ID',
           'required' => true,
         ) ,
         'domain_id' => array(
           'name' => 'domain_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Report Instance Domain ID') ,
+          'description' => 'Which Domain is this instance for',
           'required' => true,
           'FKClassName' => 'CRM_Core_DAO_Domain',
           'pseudoconstant' => array(
@@ -250,6 +252,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'title',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Report Instance Title') ,
+          'description' => 'Report Instance Title.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -260,6 +263,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'report_id',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Report template ID') ,
+          'description' => 'FK to civicrm_option_value for the report template',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -271,6 +275,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Report instance Name') ,
+          'description' => 'when combined with report_id/template uniquely identifies the instance',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -281,6 +286,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'args',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Report Instance Arguments') ,
+          'description' => 'arguments that are passed in the url when invoking the instance',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -291,6 +297,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Report Instance description') ,
+          'description' => 'Report Instance description.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -301,6 +308,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'permission',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Report Instance Permissions') ,
+          'description' => 'permission required to be able to run this instance',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -311,6 +319,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'grouprole',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Report Instance Assigned to Roles') ,
+          'description' => 'role required to be able to run this instance',
           'maxlength' => 1024,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -321,6 +330,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'form_values',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Submitted Form Values') ,
+          'description' => 'Submitted form values for this report',
           'import' => true,
           'where' => 'civicrm_report_instance.form_values',
           'headerPattern' => '',
@@ -331,6 +341,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Report Instance is Active') ,
+          'description' => 'Is this entry active?',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -339,6 +350,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'email_subject',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Report Instance email Subject') ,
+          'description' => 'Subject of email',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -349,6 +361,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'email_to',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Email Report Instance To') ,
+          'description' => 'comma-separated list of email addresses to send the report to',
           'html' => array(
             'type' => 'Text',
           ) ,
@@ -357,6 +370,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'email_cc',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('cc Email Report Instance To') ,
+          'description' => 'comma-separated list of email addresses to send the report to',
           'html' => array(
             'type' => 'Text',
           ) ,
@@ -365,6 +379,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'header',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Report Instance Header') ,
+          'description' => 'comma-separated list of email addresses to send the report to',
           'rows' => 4,
           'cols' => 60,
           'html' => array(
@@ -375,6 +390,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'footer',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Report Instance Footer') ,
+          'description' => 'comma-separated list of email addresses to send the report to',
           'rows' => 4,
           'cols' => 60,
           'html' => array(
@@ -385,6 +401,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'navigation_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Navigation ID') ,
+          'description' => 'FK to navigation ID',
           'import' => true,
           'where' => 'civicrm_report_instance.navigation_id',
           'headerPattern' => '',
@@ -396,6 +413,7 @@ class CRM_Report_DAO_ReportInstance extends CRM_Core_DAO
           'name' => 'drilldown_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Drilldown Report ID') ,
+          'description' => 'FK to instance ID drilldown to',
           'import' => true,
           'where' => 'civicrm_report_instance.drilldown_id',
           'headerPattern' => '',

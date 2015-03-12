@@ -145,12 +145,14 @@ class CRM_Mailing_Event_DAO_TrackableURLOpen extends CRM_Core_DAO
         'event_queue_id' => array(
           'name' => 'event_queue_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to EventQueue',
           'required' => true,
           'FKClassName' => 'CRM_Mailing_Event_DAO_Queue',
         ) ,
         'trackable_url_id' => array(
           'name' => 'trackable_url_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to TrackableURL',
           'required' => true,
           'FKClassName' => 'CRM_Mailing_DAO_TrackableURL',
         ) ,
@@ -158,6 +160,7 @@ class CRM_Mailing_Event_DAO_TrackableURLOpen extends CRM_Core_DAO
           'name' => 'time_stamp',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Time Stamp') ,
+          'description' => 'When this trackable URL open occurred.',
           'required' => true,
         ) ,
       );

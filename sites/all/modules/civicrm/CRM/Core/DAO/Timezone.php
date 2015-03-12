@@ -151,12 +151,14 @@ class CRM_Core_DAO_Timezone extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Timezone Id',
           'required' => true,
         ) ,
         'name' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Timezone full name',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
@@ -164,6 +166,7 @@ class CRM_Core_DAO_Timezone extends CRM_Core_DAO
           'name' => 'abbreviation',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Abbreviation') ,
+          'description' => 'ISO Code for timezone abbreviation',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
         ) ,
@@ -171,6 +174,7 @@ class CRM_Core_DAO_Timezone extends CRM_Core_DAO
           'name' => 'gmt',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Gmt') ,
+          'description' => 'GMT name of the timezone',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
@@ -182,6 +186,7 @@ class CRM_Core_DAO_Timezone extends CRM_Core_DAO
         'country_id' => array(
           'name' => 'country_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Country Id',
           'required' => true,
           'FKClassName' => 'CRM_Core_DAO_Country',
         ) ,

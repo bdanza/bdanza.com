@@ -142,6 +142,7 @@ class CRM_Queue_DAO_QueueItem extends CRM_Core_DAO
           'name' => 'queue_name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Queue Name') ,
+          'description' => 'Name of the queue which includes this item',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -162,6 +163,7 @@ class CRM_Queue_DAO_QueueItem extends CRM_Core_DAO
           'name' => 'submit_time',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Submit Time') ,
+          'description' => 'date on which this item was submitted to the queue',
           'required' => true,
           'html' => array(
             'type' => 'Select Date',
@@ -171,6 +173,7 @@ class CRM_Queue_DAO_QueueItem extends CRM_Core_DAO
           'name' => 'release_time',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Release Time') ,
+          'description' => 'date on which this job becomes available; null if ASAP',
           'html' => array(
             'type' => 'Select Date',
           ) ,
@@ -179,6 +182,7 @@ class CRM_Queue_DAO_QueueItem extends CRM_Core_DAO
           'name' => 'data',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Queue item datas') ,
+          'description' => 'Serialized queue',
         ) ,
       );
     }

@@ -175,12 +175,14 @@ class CRM_Contact_DAO_RelationshipType extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Relationship Type ID') ,
+          'description' => 'Primary key',
           'required' => true,
         ) ,
         'name_a_b' => array(
           'name' => 'name_a_b',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Relationship Type Name A to B') ,
+          'description' => 'name for relationship of contact_a to contact_b.',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
@@ -188,6 +190,7 @@ class CRM_Contact_DAO_RelationshipType extends CRM_Core_DAO
           'name' => 'label_a_b',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Relationship Type Label A to B') ,
+          'description' => 'label for relationship of contact_a to contact_b.',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
@@ -195,6 +198,7 @@ class CRM_Contact_DAO_RelationshipType extends CRM_Core_DAO
           'name' => 'name_b_a',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Relationship Type Name B to A') ,
+          'description' => 'Optional name for relationship of contact_b to contact_a.',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
@@ -202,6 +206,7 @@ class CRM_Contact_DAO_RelationshipType extends CRM_Core_DAO
           'name' => 'label_b_a',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Relationship Type Label B to A') ,
+          'description' => 'Optional label for relationship of contact_b to contact_a.',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
@@ -209,6 +214,7 @@ class CRM_Contact_DAO_RelationshipType extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Relationship Description') ,
+          'description' => 'Optional verbose description of the relationship type.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -216,6 +222,7 @@ class CRM_Contact_DAO_RelationshipType extends CRM_Core_DAO
           'name' => 'contact_type_a',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Contact Type for Contact A') ,
+          'description' => 'If defined, contact_a in a relationship of this type must be a specific contact_type.',
           'maxlength' => 12,
           'size' => CRM_Utils_Type::TWELVE,
           'html' => array(
@@ -229,6 +236,7 @@ class CRM_Contact_DAO_RelationshipType extends CRM_Core_DAO
           'name' => 'contact_type_b',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Contact Type for Contact B') ,
+          'description' => 'If defined, contact_b in a relationship of this type must be a specific contact_type.',
           'maxlength' => 12,
           'size' => CRM_Utils_Type::TWELVE,
           'html' => array(
@@ -242,6 +250,8 @@ class CRM_Contact_DAO_RelationshipType extends CRM_Core_DAO
           'name' => 'contact_sub_type_a',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Contact Subtype A') ,
+          'description' => 'If defined, contact_sub_type_a in a relationship of this type must be a specific contact_sub_type.
+    ',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'html' => array(
@@ -252,6 +262,8 @@ class CRM_Contact_DAO_RelationshipType extends CRM_Core_DAO
           'name' => 'contact_sub_type_b',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Contact Subtype B') ,
+          'description' => 'If defined, contact_sub_type_b in a relationship of this type must be a specific contact_sub_type.
+    ',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'html' => array(
@@ -262,11 +274,14 @@ class CRM_Contact_DAO_RelationshipType extends CRM_Core_DAO
           'name' => 'is_reserved',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Relationship Type is Reserved') ,
+          'description' => 'Is this relationship type a predefined system type (can not be changed or de-activated)?',
         ) ,
         'is_active' => array(
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Relationship Type is Active') ,
+          'description' => 'Is this relationship type currently active (i.e. can be used when creating or editing relationships)?
+    ',
           'default' => '1',
         ) ,
       );

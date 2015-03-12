@@ -84,8 +84,10 @@
 </div>
 {literal}
 <script type="text/javascript">
+(function (_) {
   CRM.$(function($) {
-    var $form = $('form.{/literal}{$form.formClass}{literal}');
+    var $form = $('form.{/literal}{$form.formClass}{literal}'),
+      defaultDate = null;
 
     // Prevent html5 errors
     $form.attr('novalidate', 'novalidate');
@@ -110,13 +112,17 @@
     $('#repetition_frequency_unit', $form).each(changeFrequencyUnit).change(changeFrequencyUnit);
 
     function disableUnselected() {
-      $('input:radio[name=ends], input[name=repeats_by]', $form).not(':checked').siblings(':input').prop('disabled', true);
+      $('input:radio[name=ends], input[name=repeats_by]', $form).not(':checked').siblings(':input').prop('disabled', true).removeClass('required');
     }
     disableUnselected();
 
     $('input:radio[name=ends], input[name=repeats_by]', $form).click(function() {
       $(this).siblings(':input').prop('disabled', false).filter(':visible').addClass('required').focus();
       disableUnselected();
+    });
+
+    $('input:radio[name=ends]').siblings('.crm-clear-link').click(function() {
+      $('input:radio[name=ends][value=1]').prop('checked', true).trigger('click');
     });
 
     function validate() {
@@ -146,25 +152,53 @@
       }
     })
       .on('select2-opening', function(e) {
-        var $el = $(this);
+        var $el = $(this),
+          $input = $('.select2-search-field input', $el.select2('container'));
         // Prevent select2 from opening and show a datepicker instead
         e.preventDefault();
-        $('.select2-search-field input', $el.select2('container'))
-          .datepicker()
-          .datepicker('show')
-          .off('.crmDate')
-          .on('change.crmDate', function() {
-            if ($(this).val()) {
-              var date = $(this).datepicker('getDate'),
+        if (!$input.data('datepicker')) {
+          $input
+            .datepicker({
+              beforeShow: function() {
+                var existingSelections = _.pluck($el.select2('data') || [], 'id');
+                return {
+                  changeMonth: true,
+                  changeYear: true,
+                  defaultDate: defaultDate,
+                  beforeShowDay: function(date) {
+                    // Don't allow the same date to be selected twice
+                    var dateStr = $.datepicker.formatDate('yy-mm-dd', date);
+                    if (_.includes(existingSelections, dateStr)) {
+                      return [false, '', '{/literal}{ts escape='js'}Already selected{/ts}{literal}'];
+                    }
+                    return [true, '', ''];
+                  }
+                };
+              }
+            })
+            .datepicker('show')
+            .on('change.crmDate', function() {
+              if ($(this).val()) {
+                var date = defaultDate = $(this).datepicker('getDate'),
                 data = $el.select2('data') || [];
-              data.push({
-                text: $.datepicker.formatDate(CRM.config.dateInputFormat, date),
-                id: $.datepicker.formatDate('yy-mm-dd', date)
-              });
-              $el.select2('data', data);
-            }
-          });
+                data.push({
+                  text: $.datepicker.formatDate(CRM.config.dateInputFormat, date),
+                  id: $.datepicker.formatDate('yy-mm-dd', date)
+                });
+                $el.select2('data', data, true);
+              }
+            })
+            .on('keyup', function() {
+              $(this).val('').datepicker('show');
+            });
+        }
+      })
+      // Don't leave datepicker open when clearing selections
+      .on('select2-removed', function() {
+        $('input.hasDatepicker', $(this).select2('container'))
+          .datepicker('hide');
       });
+
 
     // Dialog for preview repeat Configuration dates
     function previewDialog() {
@@ -214,6 +248,6 @@
     $('[name=repetition_frequency_interval]', $form).each(pluralizeUnits).change(pluralizeUnits);
 
   });
-
+})(CRM._);
 </script>
 {/literal}

@@ -177,18 +177,21 @@ class CRM_Core_DAO_Phone extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Phone ID') ,
+          'description' => 'Unique Phone ID',
           'required' => true,
         ) ,
         'contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Phone Contact') ,
+          'description' => 'FK to Contact ID',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'location_type_id' => array(
           'name' => 'location_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Phone Location Type') ,
+          'description' => 'Which Location does this phone belong to.',
           'html' => array(
             'type' => 'Select',
           ) ,
@@ -202,21 +205,25 @@ class CRM_Core_DAO_Phone extends CRM_Core_DAO
           'name' => 'is_primary',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Phone Primary?') ,
+          'description' => 'Is this the primary phone for this contact and location.',
         ) ,
         'is_billing' => array(
           'name' => 'is_billing',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Billing Phone') ,
+          'description' => 'Is this the billing?',
         ) ,
         'mobile_provider_id' => array(
           'name' => 'mobile_provider_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mobile Provider') ,
+          'description' => 'Which Mobile Provider does this phone belong to.',
         ) ,
         'phone' => array(
           'name' => 'phone',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Phone') ,
+          'description' => 'Complete phone number.',
           'maxlength' => 32,
           'size' => CRM_Utils_Type::MEDIUM,
           'import' => true,
@@ -229,6 +236,7 @@ class CRM_Core_DAO_Phone extends CRM_Core_DAO
           'name' => 'phone_ext',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Phone Extension') ,
+          'description' => 'Optional extension for a phone number.',
           'maxlength' => 16,
           'size' => CRM_Utils_Type::FOUR,
           'import' => true,
@@ -244,6 +252,7 @@ class CRM_Core_DAO_Phone extends CRM_Core_DAO
           'name' => 'phone_numeric',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Phone Numeric') ,
+          'description' => 'Phone number stripped of all whitespace, letters, and punctuation.',
           'maxlength' => 32,
           'size' => CRM_Utils_Type::MEDIUM,
         ) ,
@@ -251,11 +260,13 @@ class CRM_Core_DAO_Phone extends CRM_Core_DAO
           'name' => 'phone_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Phone Type') ,
+          'description' => 'Which type of phone does this number belongs.',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'phone_type',
+            'optionEditPath' => 'civicrm/admin/options/phone_type',
           )
         ) ,
       );

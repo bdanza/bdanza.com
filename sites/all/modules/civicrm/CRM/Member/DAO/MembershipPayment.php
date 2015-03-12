@@ -141,6 +141,7 @@ class CRM_Member_DAO_MembershipPayment extends CRM_Core_DAO
           'name' => 'membership_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Membership') ,
+          'description' => 'FK to Membership table',
           'required' => true,
           'FKClassName' => 'CRM_Member_DAO_Membership',
         ) ,
@@ -148,6 +149,7 @@ class CRM_Member_DAO_MembershipPayment extends CRM_Core_DAO
           'name' => 'contribution_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contribution') ,
+          'description' => 'FK to contribution table.',
           'FKClassName' => 'CRM_Contribute_DAO_Contribution',
         ) ,
       );

@@ -126,12 +126,14 @@ class CRM_Core_DAO_Mapping extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Mapping ID',
           'required' => true,
         ) ,
         'name' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Name of Mapping',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
@@ -139,17 +141,20 @@ class CRM_Core_DAO_Mapping extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Description') ,
+          'description' => 'Description of Mapping.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
         'mapping_type_id' => array(
           'name' => 'mapping_type_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Mapping Type',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'mapping_type',
+            'optionEditPath' => 'civicrm/admin/options/mapping_type',
           )
         ) ,
       );

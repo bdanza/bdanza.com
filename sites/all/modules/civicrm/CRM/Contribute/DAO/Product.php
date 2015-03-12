@@ -236,6 +236,7 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Product Name') ,
+          'description' => 'Required product/premium name',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -248,11 +249,13 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Description') ,
+          'description' => 'Optional description of the product/premium.',
         ) ,
         'sku' => array(
           'name' => 'sku',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('SKU') ,
+          'description' => 'Optional product sku or code.',
           'maxlength' => 50,
           'size' => CRM_Utils_Type::BIG,
           'export' => true,
@@ -264,11 +267,13 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'options',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Options') ,
+          'description' => 'Store comma-delimited list of color, size, etc. options for the product.',
         ) ,
         'image' => array(
           'name' => 'image',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Image') ,
+          'description' => 'Full or relative URL to uploaded image - fullsize.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -276,6 +281,7 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'thumbnail',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Thumbnail') ,
+          'description' => 'Full or relative URL to image thumbnail.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -283,6 +289,7 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'price',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Price') ,
+          'description' => 'Sell price or market value for premiums. For tax-deductible contributions, this will be stored as non_deductible_amount in the contribution record.',
           'precision' => array(
             20,
             2
@@ -292,6 +299,7 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'currency',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Currency') ,
+          'description' => '3 character string, value from config setting or input via user.',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
           'default' => 'NULL',
@@ -309,6 +317,7 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'financial_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Type') ,
+          'description' => 'FK to Financial Type.',
           'default' => 'NULL',
           'FKClassName' => 'CRM_Financial_DAO_FinancialType',
           'pseudoconstant' => array(
@@ -321,6 +330,7 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'min_contribution',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Minimum Contribution') ,
+          'description' => 'Minimum contribution required to be eligible to select this premium.',
           'precision' => array(
             20,
             2
@@ -330,6 +340,7 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'cost',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Cost') ,
+          'description' => 'Actual cost of this product. Useful to determine net return from sale or using this as an incentive.',
           'precision' => array(
             20,
             2
@@ -339,12 +350,15 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Active') ,
+          'description' => 'Disabling premium removes it from the premiums_premium join table below.',
           'required' => true,
         ) ,
         'period_type' => array(
           'name' => 'period_type',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Period Type') ,
+          'description' => 'Rolling means we set start/end based on current day, fixed means we set start/end for current year or month
+      (e.g. 1 year + fixed -> we would set start/end for 1/1/06 thru 12/31/06 for any premium chosen in 2006) ',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'default' => 'rolling',
@@ -359,6 +373,7 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'fixed_period_start_day',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Fixed Period Start Day') ,
+          'description' => 'Month and day (MMDD) that fixed period type subscription or membership starts.',
           'default' => '0101',
         ) ,
         'duration_unit' => array(
@@ -379,11 +394,13 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'duration_interval',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Duration Interval') ,
+          'description' => 'Number of units for total duration of subscription, service, membership (e.g. 12 Months).',
         ) ,
         'frequency_unit' => array(
           'name' => 'frequency_unit',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Frequency Unit') ,
+          'description' => 'Frequency unit and interval allow option to store actual delivery frequency for a subscription or service.',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'default' => 'month',
@@ -398,6 +415,7 @@ class CRM_Contribute_DAO_Product extends CRM_Core_DAO
           'name' => 'frequency_interval',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Frequency Interval') ,
+          'description' => 'Number of units for delivery frequency of subscription, service, membership (e.g. every 3 Months).',
         ) ,
       );
     }

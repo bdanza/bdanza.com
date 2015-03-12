@@ -145,18 +145,21 @@ class CRM_Mailing_Event_DAO_Forward extends CRM_Core_DAO
         'event_queue_id' => array(
           'name' => 'event_queue_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to EventQueue',
           'required' => true,
           'FKClassName' => 'CRM_Mailing_Event_DAO_Queue',
         ) ,
         'dest_queue_id' => array(
           'name' => 'dest_queue_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to EventQueue for destination',
           'FKClassName' => 'CRM_Mailing_Event_DAO_Queue',
         ) ,
         'time_stamp' => array(
           'name' => 'time_stamp',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Time Stamp') ,
+          'description' => 'When this forward event occurred.',
           'required' => true,
         ) ,
       );

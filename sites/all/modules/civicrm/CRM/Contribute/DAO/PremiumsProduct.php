@@ -147,17 +147,20 @@ class CRM_Contribute_DAO_PremiumsProduct extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Contribution ID',
           'required' => true,
         ) ,
         'premiums_id' => array(
           'name' => 'premiums_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Foreign key to premiums settings record.',
           'required' => true,
           'FKClassName' => 'CRM_Contribute_DAO_Premium',
         ) ,
         'product_id' => array(
           'name' => 'product_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Foreign key to each product object.',
           'required' => true,
           'FKClassName' => 'CRM_Contribute_DAO_Product',
         ) ,
@@ -171,6 +174,7 @@ class CRM_Contribute_DAO_PremiumsProduct extends CRM_Core_DAO
           'name' => 'financial_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Type') ,
+          'description' => 'FK to Financial Type.',
           'default' => 'NULL',
           'FKClassName' => 'CRM_Financial_DAO_FinancialType',
           'pseudoconstant' => array(

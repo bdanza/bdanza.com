@@ -156,12 +156,14 @@ class CRM_Contact_DAO_GroupContact extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Group Contact ID') ,
+          'description' => 'primary key',
           'required' => true,
         ) ,
         'group_id' => array(
           'name' => 'group_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Group ID') ,
+          'description' => 'FK to civicrm_group',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Group',
           'html' => array(
@@ -177,6 +179,7 @@ class CRM_Contact_DAO_GroupContact extends CRM_Core_DAO
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contact ID') ,
+          'description' => 'FK to civicrm_contact',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
@@ -184,6 +187,7 @@ class CRM_Contact_DAO_GroupContact extends CRM_Core_DAO
           'name' => 'status',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Group Contact Status') ,
+          'description' => 'status of contact relative to membership in group',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'html' => array(
@@ -197,12 +201,14 @@ class CRM_Contact_DAO_GroupContact extends CRM_Core_DAO
           'name' => 'location_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Group Contact Location') ,
+          'description' => 'Optional location to associate with this membership',
           'FKClassName' => 'CRM_Core_DAO_LocBlock',
         ) ,
         'email_id' => array(
           'name' => 'email_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Group Contact Email') ,
+          'description' => 'Optional email to associate with this membership',
           'FKClassName' => 'CRM_Core_DAO_Email',
         ) ,
       );

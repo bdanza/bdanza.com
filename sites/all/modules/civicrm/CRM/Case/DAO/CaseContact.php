@@ -135,17 +135,20 @@ class CRM_Case_DAO_CaseContact extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Unique case-contact association id',
           'required' => true,
         ) ,
         'case_id' => array(
           'name' => 'case_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Case ID of case-contact association.',
           'required' => true,
           'FKClassName' => 'CRM_Case_DAO_Case',
         ) ,
         'case_contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Contact ID of contact record given case belongs to.',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Contact',
           'html' => array(

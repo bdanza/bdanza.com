@@ -139,12 +139,14 @@ class CRM_Financial_DAO_FinancialType extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Type ID') ,
+          'description' => 'ID of original financial_type so you can search this table by the financial_type.id and then select the relevant version based on the timestamp',
           'required' => true,
         ) ,
         'financial_type' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Financial Type') ,
+          'description' => 'Financial Type Name.',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -158,6 +160,7 @@ class CRM_Financial_DAO_FinancialType extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Description') ,
+          'description' => 'Financial Type Description.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -165,17 +168,20 @@ class CRM_Financial_DAO_FinancialType extends CRM_Core_DAO
           'name' => 'is_deductible',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Tax Deductible?') ,
+          'description' => 'Is this financial type tax-deductible? If true, contributions of this type may be fully OR partially deductible - non-deductible amount is stored in the Contribution record.',
           'default' => '1',
         ) ,
         'is_reserved' => array(
           'name' => 'is_reserved',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Financial Type is Reserved?') ,
+          'description' => 'Is this a predefined system object?',
         ) ,
         'is_active' => array(
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Financial Type Is Active?') ,
+          'description' => 'Is this property active?',
         ) ,
       );
     }

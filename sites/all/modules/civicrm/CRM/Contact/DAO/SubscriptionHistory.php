@@ -159,17 +159,20 @@ class CRM_Contact_DAO_SubscriptionHistory extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Internal Id',
           'required' => true,
         ) ,
         'contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Contact Id',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'group_id' => array(
           'name' => 'group_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Group Id',
           'FKClassName' => 'CRM_Contact_DAO_Group',
           'html' => array(
             'type' => 'Select',
@@ -184,12 +187,14 @@ class CRM_Contact_DAO_SubscriptionHistory extends CRM_Core_DAO
           'name' => 'date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Date') ,
+          'description' => 'Date of the (un)subscription',
           'required' => true,
         ) ,
         'method' => array(
           'name' => 'method',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Method') ,
+          'description' => 'How the (un)subscription was triggered',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'html' => array(
@@ -203,6 +208,7 @@ class CRM_Contact_DAO_SubscriptionHistory extends CRM_Core_DAO
           'name' => 'status',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Status') ,
+          'description' => 'The state of the contact within the group',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'pseudoconstant' => array(
@@ -213,6 +219,7 @@ class CRM_Contact_DAO_SubscriptionHistory extends CRM_Core_DAO
           'name' => 'tracking',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Tracking') ,
+          'description' => 'IP address or other tracking info',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,

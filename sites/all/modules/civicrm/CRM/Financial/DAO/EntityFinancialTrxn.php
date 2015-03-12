@@ -145,12 +145,14 @@ class CRM_Financial_DAO_EntityFinancialTrxn extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'ID',
           'required' => true,
         ) ,
         'entity_table' => array(
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Table') ,
+          'description' => 'May contain civicrm_financial_item, civicrm_contribution, civicrm_financial_trxn, civicrm_grant, etc',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -174,6 +176,7 @@ class CRM_Financial_DAO_EntityFinancialTrxn extends CRM_Core_DAO
           'name' => 'amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Amount') ,
+          'description' => 'allocated amount of transaction to this entity',
           'required' => true,
           'precision' => array(
             20,

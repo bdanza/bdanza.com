@@ -206,12 +206,14 @@ class CRM_PCP_DAO_PCP extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Personal Campaign Page ID') ,
+          'description' => 'Personal Campaign Page ID',
           'required' => true,
         ) ,
         'pcp_contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contact ID') ,
+          'description' => 'FK to Contact ID',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Contact',
           'html' => array(
@@ -228,6 +230,7 @@ class CRM_PCP_DAO_PCP extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'pcp_status',
+            'optionEditPath' => 'civicrm/admin/options/pcp_status',
           )
         ) ,
         'title' => array(
@@ -273,12 +276,14 @@ class CRM_PCP_DAO_PCP extends CRM_Core_DAO
         'page_id' => array(
           'name' => 'page_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'The Contribution or Event Page which triggered this pcp',
           'required' => true,
         ) ,
         'page_type' => array(
           'name' => 'page_type',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('PCP Page Type') ,
+          'description' => 'The type of PCP this is: contribute or event',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'default' => 'contribute',
@@ -289,6 +294,7 @@ class CRM_PCP_DAO_PCP extends CRM_Core_DAO
         'pcp_block_id' => array(
           'name' => 'pcp_block_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'The pcp block that this pcp page was created from',
           'required' => true,
         ) ,
         'is_thermometer' => array(
@@ -309,6 +315,7 @@ class CRM_PCP_DAO_PCP extends CRM_Core_DAO
           'name' => 'goal_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Goal Amount') ,
+          'description' => 'Goal amount of this Personal Campaign Page.',
           'precision' => array(
             20,
             2
@@ -321,6 +328,7 @@ class CRM_PCP_DAO_PCP extends CRM_Core_DAO
           'name' => 'currency',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Currency') ,
+          'description' => '3 character string, value from config setting or input via user.',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
           'default' => 'NULL',
@@ -337,6 +345,7 @@ class CRM_PCP_DAO_PCP extends CRM_Core_DAO
         'is_active' => array(
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
+          'description' => 'Is Personal Campaign Page enabled/active?',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -344,6 +353,7 @@ class CRM_PCP_DAO_PCP extends CRM_Core_DAO
         'is_notify' => array(
           'name' => 'is_notify',
           'type' => CRM_Utils_Type::T_BOOLEAN,
+          'description' => 'Notify owner via email when someone donates to page?',
           'html' => array(
             'type' => 'CheckBox',
           ) ,

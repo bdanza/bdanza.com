@@ -138,6 +138,7 @@ class CRM_Mailing_DAO_BouncePattern extends CRM_Core_DAO
         'bounce_type_id' => array(
           'name' => 'bounce_type_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Type of bounce',
           'required' => true,
           'FKClassName' => 'CRM_Mailing_DAO_BounceType',
         ) ,
@@ -145,6 +146,7 @@ class CRM_Mailing_DAO_BouncePattern extends CRM_Core_DAO
           'name' => 'pattern',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Pattern') ,
+          'description' => 'A regexp to match a message to a bounce type',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,

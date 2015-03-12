@@ -152,12 +152,14 @@ class CRM_Core_DAO_WordReplacement extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Word Replacement ID') ,
+          'description' => 'Word replacement ID',
           'required' => true,
         ) ,
         'find_word' => array(
           'name' => 'find_word',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Replaced Word') ,
+          'description' => 'Word which need to be replaced',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -165,6 +167,7 @@ class CRM_Core_DAO_WordReplacement extends CRM_Core_DAO
           'name' => 'replace_word',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Replacement Word') ,
+          'description' => 'Word which will replace the word in find',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -172,6 +175,7 @@ class CRM_Core_DAO_WordReplacement extends CRM_Core_DAO
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Word Replacement is Active') ,
+          'description' => 'Is this entry active?',
           'default' => '1',
         ) ,
         'match_type' => array(
@@ -192,6 +196,7 @@ class CRM_Core_DAO_WordReplacement extends CRM_Core_DAO
           'name' => 'domain_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Word Replacement Domain ID') ,
+          'description' => 'FK to Domain ID. This is for Domain specific word replacement',
           'FKClassName' => 'CRM_Core_DAO_Domain',
           'pseudoconstant' => array(
             'table' => 'civicrm_domain',

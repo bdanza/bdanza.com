@@ -141,18 +141,21 @@ class CRM_Core_DAO_Website extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Website ID') ,
+          'description' => 'Unique Website ID',
           'required' => true,
         ) ,
         'contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contact') ,
+          'description' => 'FK to Contact ID',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'url' => array(
           'name' => 'url',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Website') ,
+          'description' => 'Website',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::BIG,
           'import' => true,
@@ -168,11 +171,13 @@ class CRM_Core_DAO_Website extends CRM_Core_DAO
           'name' => 'website_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Website Type') ,
+          'description' => 'Which Website type does this website belong to.',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'website_type',
+            'optionEditPath' => 'civicrm/admin/options/website_type',
           )
         ) ,
       );

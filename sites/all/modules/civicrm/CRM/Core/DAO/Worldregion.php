@@ -114,12 +114,14 @@ class CRM_Core_DAO_Worldregion extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Country Id',
           'required' => true,
         ) ,
         'world_region' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('World Region') ,
+          'description' => 'Region name to be associated with countries',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'export' => true,

@@ -141,16 +141,19 @@ class CRM_ACL_DAO_Cache extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Unique table ID',
           'required' => true,
         ) ,
         'contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Foreign Key to Contact',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'acl_id' => array(
           'name' => 'acl_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Foreign Key to ACL',
           'required' => true,
           'FKClassName' => 'CRM_ACL_DAO_ACL',
         ) ,
@@ -158,6 +161,7 @@ class CRM_ACL_DAO_Cache extends CRM_Core_DAO
           'name' => 'modified_date',
           'type' => CRM_Utils_Type::T_DATE,
           'title' => ts('Modified Date') ,
+          'description' => 'When was this cache entry last modified',
         ) ,
       );
     }

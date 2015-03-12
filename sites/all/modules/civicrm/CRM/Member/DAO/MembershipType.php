@@ -242,12 +242,14 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Membership Type ID') ,
+          'description' => 'Membership Id',
           'required' => true,
         ) ,
         'domain_id' => array(
           'name' => 'domain_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Membership Type Domain') ,
+          'description' => 'Which Domain is this match entry for',
           'required' => true,
           'FKClassName' => 'CRM_Core_DAO_Domain',
           'pseudoconstant' => array(
@@ -260,6 +262,7 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Membership Type') ,
+          'description' => 'Name of Membership Type',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -272,6 +275,7 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Membership Type Description') ,
+          'description' => 'Description of Membership Type',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -282,6 +286,7 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'member_of_contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Membership Type Organization') ,
+          'description' => 'Owner organization for this membership type. FK to Contact ID',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
@@ -289,6 +294,7 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'financial_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Membership Financial Type') ,
+          'description' => 'If membership is paid by a contribution - what financial type should be used. FK to civicrm_financial_type.id',
           'required' => true,
           'FKClassName' => 'CRM_Financial_DAO_FinancialType',
           'pseudoconstant' => array(
@@ -301,6 +307,7 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'minimum_fee',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('membership Type Minimum Fee') ,
+          'description' => 'Minimum fee for this membership (0 for free/complimentary memberships).',
           'precision' => array(
             20,
             2
@@ -310,6 +317,7 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'duration_unit',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Membership Type Duration Unit') ,
+          'description' => 'Unit in which membership period is expressed.',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'html' => array(
@@ -323,11 +331,13 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'duration_interval',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Membership Type Duration Interval') ,
+          'description' => 'Number of duration units in membership period (e.g. 1 year, 12 months).',
         ) ,
         'period_type' => array(
           'name' => 'period_type',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Membership Type Plan') ,
+          'description' => 'Rolling membership period starts on signup date. Fixed membership periods start on fixed_period_start_day.',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'pseudoconstant' => array(
@@ -338,16 +348,19 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'fixed_period_start_day',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Fixed Period Start Day') ,
+          'description' => 'For fixed period memberships, month and day (mmdd) on which subscription/membership will start. Period start is back-dated unless after rollover day.',
         ) ,
         'fixed_period_rollover_day' => array(
           'name' => 'fixed_period_rollover_day',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Fixed Period Rollover Day') ,
+          'description' => 'For fixed period memberships, signups after this day (mmdd) rollover to next period.',
         ) ,
         'relationship_type_id' => array(
           'name' => 'relationship_type_id',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Membership Type Relationship') ,
+          'description' => 'FK to Relationship Type ID',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
@@ -362,6 +375,7 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'max_related',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Max Related Members for Type') ,
+          'description' => 'Maximum number of related memberships.',
         ) ,
         'visibility' => array(
           'name' => 'visibility',
@@ -385,6 +399,7 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'receipt_text_signup',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Membership Type Receipt Text') ,
+          'description' => 'Receipt Text for membership signup',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -395,6 +410,7 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'receipt_text_renewal',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Membership Type Renewal Text') ,
+          'description' => 'Receipt Text for membership renewal',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -405,6 +421,7 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'auto_renew',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Auto Renew') ,
+          'description' => '0 = No auto-renew option; 1 = Give option, but not required; 2 = Auto-renew required;',
           'pseudoconstant' => array(
             'callback' => 'CRM_Core_SelectValues::memberAutoRenew',
           )
@@ -413,6 +430,7 @@ class CRM_Member_DAO_MembershipType extends CRM_Core_DAO
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Active') ,
+          'description' => 'Is this membership_type enabled',
           'default' => '1',
         ) ,
       );

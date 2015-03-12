@@ -133,6 +133,12 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
    */
   public $name;
   /**
+   * differentiate between standalone mailings, A/B tests, and A/B final-winner
+   *
+   * @var string
+   */
+  public $mailing_type;
+  /**
    * From Header of mailing
    *
    * @var string
@@ -360,6 +366,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'domain_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Domain') ,
+          'description' => 'Which site is this mailing for',
           'FKClassName' => 'CRM_Core_DAO_Domain',
           'pseudoconstant' => array(
             'table' => 'civicrm_domain',
@@ -371,24 +378,28 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'header_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Header') ,
+          'description' => 'FK to the header component.',
           'FKClassName' => 'CRM_Mailing_DAO_Component',
         ) ,
         'footer_id' => array(
           'name' => 'footer_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Footer') ,
+          'description' => 'FK to the footer component.',
           'FKClassName' => 'CRM_Mailing_DAO_Component',
         ) ,
         'reply_id' => array(
           'name' => 'reply_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Reply') ,
+          'description' => 'FK to the auto-responder component.',
           'FKClassName' => 'CRM_Mailing_DAO_Component',
         ) ,
         'unsubscribe_id' => array(
           'name' => 'unsubscribe_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Unsubscribe') ,
+          'description' => 'FK to the unsubscribe component.',
           'FKClassName' => 'CRM_Mailing_DAO_Component',
         ) ,
         'resubscribe_id' => array(
@@ -400,22 +411,39 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'optout_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Opt Out') ,
+          'description' => 'FK to the opt-out component.',
           'FKClassName' => 'CRM_Mailing_DAO_Component',
         ) ,
         'name' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Mailing Name') ,
+          'description' => 'Mailing Name.',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
             'type' => 'Text',
           ) ,
         ) ,
+        'mailing_type' => array(
+          'name' => 'mailing_type',
+          'type' => CRM_Utils_Type::T_STRING,
+          'title' => ts('Mailing Type') ,
+          'description' => 'differentiate between standalone mailings, A/B tests, and A/B final-winner',
+          'maxlength' => 32,
+          'size' => CRM_Utils_Type::MEDIUM,
+          'html' => array(
+            'type' => 'Select',
+          ) ,
+          'pseudoconstant' => array(
+            'callback' => 'CRM_Mailing_PseudoConstant::mailingTypes',
+          )
+        ) ,
         'from_name' => array(
           'name' => 'from_name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Mailing From Name') ,
+          'description' => 'From Header of mailing',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -426,6 +454,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'from_email',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Mailing From Email') ,
+          'description' => 'From Email of mailing',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -436,6 +465,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'replyto_email',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Replyto Email') ,
+          'description' => 'Reply-To Email of mailing',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -446,6 +476,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'subject',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Subject') ,
+          'description' => 'Subject of mailing',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -456,16 +487,19 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'body_text',
           'type' => CRM_Utils_Type::T_LONGTEXT,
           'title' => ts('Body Text') ,
+          'description' => 'Body of the mailing in text format.',
         ) ,
         'body_html' => array(
           'name' => 'body_html',
           'type' => CRM_Utils_Type::T_LONGTEXT,
           'title' => ts('Body Html') ,
+          'description' => 'Body of the mailing in html format.',
         ) ,
         'url_tracking' => array(
           'name' => 'url_tracking',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Url Tracking') ,
+          'description' => 'Should we track URL click-throughs for this mailing?',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -474,6 +508,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'forward_replies',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Forward Replies') ,
+          'description' => 'Should we forward replies back to the author?',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -482,6 +517,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'auto_responder',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Auto Responder') ,
+          'description' => 'Should we enable the auto-responder?',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -490,11 +526,13 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'open_tracking',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Track Mailing?') ,
+          'description' => 'Should we track when recipients open/read this mailing?',
         ) ,
         'is_completed' => array(
           'name' => 'is_completed',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Mailing Completed') ,
+          'description' => 'Has at least one job associated with this mailing finished?',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -503,12 +541,14 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'msg_template_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Message Template') ,
+          'description' => 'FK to the message template.',
           'FKClassName' => 'CRM_Core_DAO_MessageTemplate',
         ) ,
         'override_verp' => array(
           'name' => 'override_verp',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Override Verp') ,
+          'description' => 'Should we overrite VERP address in Reply-To',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -517,12 +557,14 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'created_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Creator') ,
+          'description' => 'FK to Contact ID who first created this mailing',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'created_date' => array(
           'name' => 'created_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Mailing Created Date') ,
+          'description' => 'Date and time this mailing was created.',
           'html' => array(
             'type' => 'Select Date',
           ) ,
@@ -531,39 +573,46 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'scheduled_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Scheduled By') ,
+          'description' => 'FK to Contact ID who scheduled this mailing',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'scheduled_date' => array(
           'name' => 'scheduled_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Mailing Scheduled Date') ,
+          'description' => 'Date and time this mailing was scheduled.',
         ) ,
         'approver_id' => array(
           'name' => 'approver_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Approved By') ,
+          'description' => 'FK to Contact ID who approved this mailing',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'approval_date' => array(
           'name' => 'approval_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Mailing Approved Date') ,
+          'description' => 'Date and time this mailing was approved.',
         ) ,
         'approval_status_id' => array(
           'name' => 'approval_status_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Approval Status') ,
+          'description' => 'The status of this mailing. Values: none, approved, rejected',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'mail_approval_status',
+            'optionEditPath' => 'civicrm/admin/options/mail_approval_status',
           )
         ) ,
         'approval_note' => array(
           'name' => 'approval_note',
           'type' => CRM_Utils_Type::T_LONGTEXT,
           'title' => ts('Approval Note') ,
+          'description' => 'Note behind the decision.',
           'html' => array(
             'type' => 'TextArea',
           ) ,
@@ -572,6 +621,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'is_archived',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Mailing Archived?') ,
+          'description' => 'Is this mailing archived?',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -580,6 +630,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'visibility',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Mailing Visibility') ,
+          'description' => 'In what context(s) is the mailing contents visible (online viewing)',
           'maxlength' => 40,
           'size' => CRM_Utils_Type::BIG,
           'default' => 'Public Pages',
@@ -594,6 +645,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'campaign_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Campaign') ,
+          'description' => 'The campaign for which this mailing has been initiated.',
           'FKClassName' => 'CRM_Campaign_DAO_Campaign',
           'html' => array(
             'type' => 'Select',
@@ -608,6 +660,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'dedupe_email',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('No Duplicate emails?') ,
+          'description' => 'Remove duplicate emails?',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -625,6 +678,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'hash',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Mailing Hash') ,
+          'description' => 'Key for validating requests related to this mailing.',
           'maxlength' => 16,
           'size' => CRM_Utils_Type::TWELVE,
         ) ,
@@ -632,6 +686,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'location_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Location Type') ,
+          'description' => 'With email_selection_method, determines which email address to use',
           'FKClassName' => 'CRM_Core_DAO_LocationType',
           'pseudoconstant' => array(
             'table' => 'civicrm_location_type',
@@ -643,6 +698,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
           'name' => 'email_selection_method',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Email Selection Method') ,
+          'description' => 'With location_type_id, determine how to choose the email address to use.',
           'maxlength' => 20,
           'size' => CRM_Utils_Type::MEDIUM,
           'default' => 'automatic',
@@ -673,6 +729,7 @@ class CRM_Mailing_DAO_Mailing extends CRM_Core_DAO
         'resubscribe_id' => 'resubscribe_id',
         'optout_id' => 'optout_id',
         'name' => 'name',
+        'mailing_type' => 'mailing_type',
         'from_name' => 'from_name',
         'from_email' => 'from_email',
         'replyto_email' => 'replyto_email',

@@ -162,6 +162,7 @@ class CRM_Mailing_DAO_Spool extends CRM_Core_DAO
         'job_id' => array(
           'name' => 'job_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'The ID of the Job .',
           'required' => true,
           'FKClassName' => 'CRM_Mailing_DAO_MailingJob',
         ) ,
@@ -169,26 +170,31 @@ class CRM_Mailing_DAO_Spool extends CRM_Core_DAO
           'name' => 'recipient_email',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Recipient Email') ,
+          'description' => 'The email of the receipients this mail is to be sent.',
         ) ,
         'headers' => array(
           'name' => 'headers',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Headers') ,
+          'description' => 'The header information of this mailing .',
         ) ,
         'body' => array(
           'name' => 'body',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Body') ,
+          'description' => 'The body of this mailing.',
         ) ,
         'added_at' => array(
           'name' => 'added_at',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Added At') ,
+          'description' => 'date on which this job was added.',
         ) ,
         'removed_at' => array(
           'name' => 'removed_at',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Removed At') ,
+          'description' => 'date on which this job was removed.',
         ) ,
       );
     }

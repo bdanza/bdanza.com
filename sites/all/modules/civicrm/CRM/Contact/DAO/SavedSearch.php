@@ -158,12 +158,14 @@ class CRM_Contact_DAO_SavedSearch extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Saved search ID',
           'required' => true,
         ) ,
         'form_values' => array(
           'name' => 'form_values',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Submitted Form Values') ,
+          'description' => 'Submitted form values for this search',
           'import' => true,
           'where' => 'civicrm_saved_search.form_values',
           'headerPattern' => '',
@@ -173,26 +175,31 @@ class CRM_Contact_DAO_SavedSearch extends CRM_Core_DAO
         'mapping_id' => array(
           'name' => 'mapping_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Foreign key to civicrm_mapping used for saved search-builder searches.',
           'FKClassName' => 'CRM_Core_DAO_Mapping',
         ) ,
         'search_custom_id' => array(
           'name' => 'search_custom_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Foreign key to civicrm_option value table used for saved custom searches.',
         ) ,
         'where_clause' => array(
           'name' => 'where_clause',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Where Clause') ,
+          'description' => 'the sql where clause if a saved search acl',
         ) ,
         'select_tables' => array(
           'name' => 'select_tables',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Select Tables') ,
+          'description' => 'the tables to be included in a select data',
         ) ,
         'where_tables' => array(
           'name' => 'where_tables',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Where Tables') ,
+          'description' => 'the tables to be included in the count statement',
         ) ,
       );
     }

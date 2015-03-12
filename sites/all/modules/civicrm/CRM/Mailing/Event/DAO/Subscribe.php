@@ -153,6 +153,7 @@ class CRM_Mailing_Event_DAO_Subscribe extends CRM_Core_DAO
           'name' => 'group_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Subscribe Group') ,
+          'description' => 'FK to Group',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Group',
           'html' => array(
@@ -168,6 +169,7 @@ class CRM_Mailing_Event_DAO_Subscribe extends CRM_Core_DAO
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Subscribe Contact') ,
+          'description' => 'FK to Contact',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
@@ -175,6 +177,7 @@ class CRM_Mailing_Event_DAO_Subscribe extends CRM_Core_DAO
           'name' => 'hash',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Mailing Subscribe Hash') ,
+          'description' => 'Security hash',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -183,6 +186,7 @@ class CRM_Mailing_Event_DAO_Subscribe extends CRM_Core_DAO
           'name' => 'time_stamp',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Mailing Subscribe Timestamp') ,
+          'description' => 'When this subscription event occurred.',
           'required' => true,
         ) ,
       );

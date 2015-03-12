@@ -159,18 +159,21 @@ class CRM_Core_DAO_IM extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Instant Messenger ID') ,
+          'description' => 'Unique IM ID',
           'required' => true,
         ) ,
         'contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('IM Contact') ,
+          'description' => 'FK to Contact ID',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'location_type_id' => array(
           'name' => 'location_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('IM Location Type') ,
+          'description' => 'Which Location does this email belong to.',
           'pseudoconstant' => array(
             'table' => 'civicrm_location_type',
             'keyColumn' => 'id',
@@ -181,6 +184,7 @@ class CRM_Core_DAO_IM extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('IM Screen Name') ,
+          'description' => 'IM screen name',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'import' => true,
@@ -193,22 +197,26 @@ class CRM_Core_DAO_IM extends CRM_Core_DAO
           'name' => 'provider_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('IM Provider') ,
+          'description' => 'Which IM Provider does this screen name belong to.',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'instant_messenger_service',
+            'optionEditPath' => 'civicrm/admin/options/instant_messenger_service',
           )
         ) ,
         'is_primary' => array(
           'name' => 'is_primary',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is IM Primary?') ,
+          'description' => 'Is this the primary IM for this contact and location.',
         ) ,
         'is_billing' => array(
           'name' => 'is_billing',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is IM Billing?') ,
+          'description' => 'Is this the billing?',
         ) ,
       );
     }

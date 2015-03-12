@@ -177,6 +177,7 @@ class CRM_Member_DAO_MembershipLog extends CRM_Core_DAO
         'membership_id' => array(
           'name' => 'membership_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to Membership table',
           'required' => true,
           'FKClassName' => 'CRM_Member_DAO_Membership',
         ) ,
@@ -184,6 +185,7 @@ class CRM_Member_DAO_MembershipLog extends CRM_Core_DAO
           'name' => 'status_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Membership Status') ,
+          'description' => 'New status assigned to membership by this action. FK to Membership Status',
           'required' => true,
           'FKClassName' => 'CRM_Member_DAO_MembershipStatus',
         ) ,
@@ -191,31 +193,37 @@ class CRM_Member_DAO_MembershipLog extends CRM_Core_DAO
           'name' => 'start_date',
           'type' => CRM_Utils_Type::T_DATE,
           'title' => ts('Start Date') ,
+          'description' => 'New membership period start date',
         ) ,
         'end_date' => array(
           'name' => 'end_date',
           'type' => CRM_Utils_Type::T_DATE,
           'title' => ts('End Date') ,
+          'description' => 'New membership period expiration date.',
         ) ,
         'modified_id' => array(
           'name' => 'modified_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to Contact ID of person under whose credentials this data modification was made.',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'modified_date' => array(
           'name' => 'modified_date',
           'type' => CRM_Utils_Type::T_DATE,
           'title' => ts('Membership Change Date') ,
+          'description' => 'Date this membership modification action was logged.',
         ) ,
         'membership_type_id' => array(
           'name' => 'membership_type_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to Membership Type.',
           'FKClassName' => 'CRM_Member_DAO_MembershipType',
         ) ,
         'max_related' => array(
           'name' => 'max_related',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Max Related') ,
+          'description' => 'Maximum number of related memberships.',
         ) ,
       );
     }

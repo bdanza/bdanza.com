@@ -142,12 +142,14 @@ class CRM_Activity_DAO_ActivityContact extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Activity Contact ID') ,
+          'description' => 'Activity contact id',
           'required' => true,
         ) ,
         'activity_id' => array(
           'name' => 'activity_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Activity ID') ,
+          'description' => 'Foreign key to the activity for this record.',
           'required' => true,
           'FKClassName' => 'CRM_Activity_DAO_Activity',
         ) ,
@@ -155,6 +157,7 @@ class CRM_Activity_DAO_ActivityContact extends CRM_Core_DAO
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contact ID (match to contact)') ,
+          'description' => 'Foreign key to the contact for this record.',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_activity_contact.contact_id',
@@ -167,11 +170,13 @@ class CRM_Activity_DAO_ActivityContact extends CRM_Core_DAO
           'name' => 'record_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Record Type ID') ,
+          'description' => 'Nature of this contact\'s role in the activity: 1 assignee, 2 creator, 3 focus or target.',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'activity_contacts',
+            'optionEditPath' => 'civicrm/admin/options/activity_contacts',
           )
         ) ,
       );

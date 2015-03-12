@@ -182,23 +182,27 @@ class CRM_Core_DAO_ActionLog extends CRM_Core_DAO
         'contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to Contact ID',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'entity_id' => array(
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to id of the entity that the action was performed on. Pseudo - FK.',
           'required' => true,
         ) ,
         'entity_table' => array(
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Table') ,
+          'description' => 'name of the entity table for the above id, e.g. civicrm_activity, civicrm_participant',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
         'action_schedule_id' => array(
           'name' => 'action_schedule_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to the action schedule that this action originated from.',
           'required' => true,
           'FKClassName' => 'CRM_Core_DAO_ActionSchedule',
         ) ,
@@ -206,25 +210,30 @@ class CRM_Core_DAO_ActionLog extends CRM_Core_DAO
           'name' => 'action_date_time',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Action Date Time') ,
+          'description' => 'date time that the action was performed on.',
         ) ,
         'is_error' => array(
           'name' => 'is_error',
           'type' => CRM_Utils_Type::T_BOOLEAN,
+          'description' => 'Was there any error sending the reminder?',
         ) ,
         'message' => array(
           'name' => 'message',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Message') ,
+          'description' => 'Description / text in case there was an error encountered.',
         ) ,
         'repetition_number' => array(
           'name' => 'repetition_number',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Repetition Number') ,
+          'description' => 'Keeps track of the sequence number of this repetition.',
         ) ,
         'reference_date' => array(
           'name' => 'reference_date',
           'type' => CRM_Utils_Type::T_DATE,
           'title' => ts('Reference Date') ,
+          'description' => 'Stores the date from the entity which triggered this reminder action (e.g. membership.end_date for most membership renewal reminders)',
           'default' => 'NULL',
         ) ,
       );

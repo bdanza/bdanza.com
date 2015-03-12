@@ -221,6 +221,7 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Campaign ID') ,
+          'description' => 'Unique Campaign ID.',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_campaign.id',
@@ -232,6 +233,7 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Campaign Name') ,
+          'description' => 'Name of the Campaign.',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -248,6 +250,7 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'title',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Campaign Title') ,
+          'description' => 'Title of the Campaign.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -263,6 +266,7 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Campaign Description') ,
+          'description' => 'Full description of Campaign.',
           'rows' => 8,
           'cols' => 60,
           'html' => array(
@@ -273,6 +277,7 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'start_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Campaign Start Date') ,
+          'description' => 'Date and time that Campaign starts.',
           'import' => true,
           'where' => 'civicrm_campaign.start_date',
           'headerPattern' => '/^start|(s(tart\s)?date)$/i',
@@ -286,6 +291,7 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'end_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Campaign End Date') ,
+          'description' => 'Date and time that Campaign ends.',
           'import' => true,
           'where' => 'civicrm_campaign.end_date',
           'headerPattern' => '/^end|(e(nd\s)?date)$/i',
@@ -299,6 +305,7 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'campaign_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Campaign Type') ,
+          'description' => 'Campaign Type ID.Implicit FK to civicrm_option_value where option_group = campaign_type',
           'import' => true,
           'where' => 'civicrm_campaign.campaign_type_id',
           'headerPattern' => '',
@@ -310,12 +317,14 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'campaign_type',
+            'optionEditPath' => 'civicrm/admin/options/campaign_type',
           )
         ) ,
         'status_id' => array(
           'name' => 'status_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Campaign Status') ,
+          'description' => 'Campaign status ID.Implicit FK to civicrm_option_value where option_group = campaign_status',
           'import' => true,
           'where' => 'civicrm_campaign.status_id',
           'headerPattern' => '',
@@ -327,12 +336,14 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'campaign_status',
+            'optionEditPath' => 'civicrm/admin/options/campaign_status',
           )
         ) ,
         'external_identifier' => array(
           'name' => 'external_identifier',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Campaign External ID') ,
+          'description' => 'Unique trusted external ID (generally from a legacy app/datasource). Particularly useful for deduping operations.',
           'maxlength' => 32,
           'size' => CRM_Utils_Type::MEDIUM,
           'import' => true,
@@ -348,6 +359,7 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'parent_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Parent Campaign') ,
+          'description' => 'Optional parent id for this Campaign.',
           'import' => true,
           'where' => 'civicrm_campaign.parent_id',
           'headerPattern' => '',
@@ -363,6 +375,7 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Campaign Active?') ,
+          'description' => 'Is this Campaign enabled or disabled/cancelled?',
           'default' => '1',
           'html' => array(
             'type' => 'CheckBox',
@@ -372,12 +385,14 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'created_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Campaign Created By') ,
+          'description' => 'FK to civicrm_contact, who created this Campaign.',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'created_date' => array(
           'name' => 'created_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Campaign Created Date') ,
+          'description' => 'Date and time that Campaign was created.',
           'html' => array(
             'type' => 'Select Date',
           ) ,
@@ -386,17 +401,20 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'last_modified_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Campaign Modified By') ,
+          'description' => 'FK to civicrm_contact, who recently edited this Campaign.',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'last_modified_date' => array(
           'name' => 'last_modified_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Campaign Modified Date') ,
+          'description' => 'Date and time that Campaign was edited last time.',
         ) ,
         'goal_general' => array(
           'name' => 'goal_general',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Campaign Goals') ,
+          'description' => 'General goals for Campaign.',
           'html' => array(
             'type' => 'RichTextEditor',
           ) ,
@@ -405,6 +423,7 @@ class CRM_Campaign_DAO_Campaign extends CRM_Core_DAO
           'name' => 'goal_revenue',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Goal Revenue') ,
+          'description' => 'The target revenue for this campaign.',
           'precision' => array(
             20,
             2

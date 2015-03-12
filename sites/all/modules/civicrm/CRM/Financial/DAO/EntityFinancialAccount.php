@@ -147,12 +147,14 @@ class CRM_Financial_DAO_EntityFinancialAccount extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'ID',
           'required' => true,
         ) ,
         'entity_table' => array(
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Table') ,
+          'description' => 'Links to an entity_table like civicrm_financial_type',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -165,23 +167,27 @@ class CRM_Financial_DAO_EntityFinancialAccount extends CRM_Core_DAO
         'entity_id' => array(
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Links to an id in the entity_table, such as vid in civicrm_financial_type',
           'required' => true,
         ) ,
         'account_relationship' => array(
           'name' => 'account_relationship',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Account Relationship') ,
+          'description' => 'FK to a new civicrm_option_value (account_relationship)',
           'required' => true,
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'account_relationship',
+            'optionEditPath' => 'civicrm/admin/options/account_relationship',
           )
         ) ,
         'financial_account_id' => array(
           'name' => 'financial_account_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to the financial_account_id',
           'required' => true,
           'FKClassName' => 'CRM_Financial_DAO_FinancialAccount',
           'html' => array(

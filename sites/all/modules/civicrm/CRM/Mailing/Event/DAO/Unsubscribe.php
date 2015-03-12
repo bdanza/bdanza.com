@@ -146,6 +146,7 @@ class CRM_Mailing_Event_DAO_Unsubscribe extends CRM_Core_DAO
           'name' => 'event_queue_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Event Queue') ,
+          'description' => 'FK to EventQueue',
           'required' => true,
           'FKClassName' => 'CRM_Mailing_Event_DAO_Queue',
         ) ,
@@ -153,12 +154,14 @@ class CRM_Mailing_Event_DAO_Unsubscribe extends CRM_Core_DAO
           'name' => 'org_unsubscribe',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Unsubscribe is for Organization?') ,
+          'description' => 'Unsubscribe at org- or group-level',
           'required' => true,
         ) ,
         'time_stamp' => array(
           'name' => 'time_stamp',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Unsubscribe Timestamp') ,
+          'description' => 'When this delivery event occurred.',
           'required' => true,
         ) ,
       );

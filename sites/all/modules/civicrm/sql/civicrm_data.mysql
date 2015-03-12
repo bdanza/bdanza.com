@@ -787,13 +787,13 @@ INSERT INTO civicrm_state_province (id, country_id, abbreviation, name) VALUES
 (1839, 1034, "ZOU", "Zoundweogo"),
 (1840, 1033, "01", "Blagoevgrad"),
 (1841, 1033, "02", "Burgas"),
-(1842, 1033, "08", "Dobric"),
+(1842, 1033, "08", "Dobrich"),
 (1843, 1033, "07", "Gabrovo"),
 (1844, 1033, "26", "Haskovo"),
-(1845, 1033, "28", "Jambol"),
-(1846, 1033, "09", "Kardzali"),
-(1847, 1033, "10", "Kjstendil"),
-(1848, 1033, "11", "Lovec"),
+(1845, 1033, "28", "Yambol"),
+(1846, 1033, "09", "Kardzhali"),
+(1847, 1033, "10", "Kyustendil"),
+(1848, 1033, "11", "Lovech"),
 (1849, 1033, "12", "Montana"),
 (1850, 1033, "13", "Pazardzik"),
 (1851, 1033, "14", "Pernik"),
@@ -803,15 +803,15 @@ INSERT INTO civicrm_state_province (id, country_id, abbreviation, name) VALUES
 (1855, 1033, "18", "Ruse"),
 (1856, 1033, "19", "Silistra"),
 (1857, 1033, "20", "Sliven"),
-(1858, 1033, "21", "Smoljan"),
+(1858, 1033, "21", "Smolyan"),
 (1859, 1033, "23", "Sofia"),
 (1860, 1033, "24", "Stara Zagora"),
-(1861, 1033, "27", "Sumen"),
-(1862, 1033, "25", "Targoviste"),
+(1861, 1033, "27", "Shumen"),
+(1862, 1033, "25", "Targovishte"),
 (1863, 1033, "03", "Varna"),
 (1864, 1033, "04", "Veliko Tarnovo"),
 (1865, 1033, "05", "Vidin"),
-(1866, 1033, "06", "Vraca"),
+(1866, 1033, "06", "Vratsa"),
 (1867, 1016, "01", "Al Hadd"),
 (1868, 1016, "03", "Al Manamah"),
 (1869, 1016, "10", "Al Mintaqah al Gharbiyah"),
@@ -17935,7 +17935,7 @@ or want to inquire about reinstating your registration for this event.{/ts}</p>
        {if $dataArray}
         <tr>
          <td {$labelStyle}>
-          {ts}Amount Before Tax : {/ts}
+          {ts}Amount Before Tax:{/ts}
          </td>
          <td {$valueStyle}>
           {$formValues.total_amount-$totalTaxAmount|crmMoney}
@@ -18350,7 +18350,7 @@ or want to inquire about reinstating your registration for this event.{/ts}</p>
        {if $dataArray}
         <tr>
          <td {$labelStyle}>
-          {ts}Amount Before Tax : {/ts}
+          {ts}Amount Before Tax:{/ts}
          </td>
          <td {$valueStyle}>
           {$formValues.total_amount-$totalTaxAmount|crmMoney}
@@ -18969,7 +18969,7 @@ or want to inquire about reinstating your registration for this event.{/ts}</p>
        {if $dataArray}
         <tr>
          <td {$labelStyle}>
-          {ts} Amount Before Tax : {/ts}
+          {ts}Amount Before Tax:{/ts}
          </td>
          <td {$valueStyle}>
           {$amount-$totalTaxAmount|crmMoney}
@@ -19779,7 +19779,7 @@ or want to inquire about reinstating your registration for this event.{/ts}</p>
        {if $dataArray}
         <tr>
          <td {$labelStyle}>
-          {ts} Amount Before Tax : {/ts}
+          {ts}Amount Before Tax:{/ts}
          </td>
          <td {$valueStyle}>
           {$amount-$totalTaxAmount|crmMoney}
@@ -23648,4 +23648,4 @@ INSERT INTO `civicrm_report_instance`
 VALUES
     (  @domainID, 'Survey Details', 'survey/detail', 'Detailed report for canvassing, phone-banking, walk lists or other surveys.', 'access CiviReport', 'a:39:{s:6:"fields";a:2:{s:9:"sort_name";s:1:"1";s:6:"result";s:1:"1";}s:22:"assignee_contact_id_op";s:2:"eq";s:25:"assignee_contact_id_value";s:0:"";s:12:"sort_name_op";s:3:"has";s:15:"sort_name_value";s:0:"";s:17:"street_number_min";s:0:"";s:17:"street_number_max";s:0:"";s:16:"street_number_op";s:3:"lte";s:19:"street_number_value";s:0:"";s:14:"street_name_op";s:3:"has";s:17:"street_name_value";s:0:"";s:15:"postal_code_min";s:0:"";s:15:"postal_code_max";s:0:"";s:14:"postal_code_op";s:3:"lte";s:17:"postal_code_value";s:0:"";s:7:"city_op";s:3:"has";s:10:"city_value";s:0:"";s:20:"state_province_id_op";s:2:"in";s:23:"state_province_id_value";a:0:{}s:13:"country_id_op";s:2:"in";s:16:"country_id_value";a:0:{}s:12:"survey_id_op";s:2:"in";s:15:"survey_id_value";a:0:{}s:12:"status_id_op";s:2:"eq";s:15:"status_id_value";s:1:"1";s:11:"custom_1_op";s:2:"in";s:14:"custom_1_value";a:0:{}s:11:"custom_2_op";s:2:"in";s:14:"custom_2_value";a:0:{}s:17:"custom_3_relative";s:1:"0";s:13:"custom_3_from";s:0:"";s:11:"custom_3_to";s:0:"";s:11:"description";s:75:"Detailed report for canvassing, phone-banking, walk lists or other surveys.";s:13:"email_subject";s:0:"";s:8:"email_to";s:0:"";s:8:"email_cc";s:0:"";s:10:"permission";s:17:"access CiviReport";s:6:"groups";s:0:"";s:9:"domain_id";i:1;}');
 
-UPDATE civicrm_domain SET version = '4.6.beta2';
+UPDATE civicrm_domain SET version = '4.6.beta3';

@@ -192,12 +192,14 @@ class CRM_Member_DAO_MembershipStatus extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Membership Status ID') ,
+          'description' => 'Membership Id',
           'required' => true,
         ) ,
         'membership_status' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Membership Status') ,
+          'description' => 'Name for Membership Status',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -210,6 +212,7 @@ class CRM_Member_DAO_MembershipStatus extends CRM_Core_DAO
           'name' => 'label',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Label') ,
+          'description' => 'Label for Membership Status',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -217,6 +220,7 @@ class CRM_Member_DAO_MembershipStatus extends CRM_Core_DAO
           'name' => 'start_event',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Start Event') ,
+          'description' => 'Event when this status starts.',
           'maxlength' => 12,
           'size' => CRM_Utils_Type::TWELVE,
           'html' => array(
@@ -230,6 +234,7 @@ class CRM_Member_DAO_MembershipStatus extends CRM_Core_DAO
           'name' => 'start_event_adjust_unit',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Start Event Adjust Unit') ,
+          'description' => 'Unit used for adjusting from start_event.',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'html' => array(
@@ -243,11 +248,13 @@ class CRM_Member_DAO_MembershipStatus extends CRM_Core_DAO
           'name' => 'start_event_adjust_interval',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Start Event Adjust Interval') ,
+          'description' => 'Status range begins this many units from start_event.',
         ) ,
         'end_event' => array(
           'name' => 'end_event',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('End Event') ,
+          'description' => 'Event after which this status ends.',
           'maxlength' => 12,
           'size' => CRM_Utils_Type::TWELVE,
           'html' => array(
@@ -261,6 +268,7 @@ class CRM_Member_DAO_MembershipStatus extends CRM_Core_DAO
           'name' => 'end_event_adjust_unit',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('End Event Adjust Unit') ,
+          'description' => 'Unit used for adjusting from the ending event.',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'html' => array(
@@ -274,16 +282,19 @@ class CRM_Member_DAO_MembershipStatus extends CRM_Core_DAO
           'name' => 'end_event_adjust_interval',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('End Event Adjust Interval') ,
+          'description' => 'Status range ends this many units from end_event.',
         ) ,
         'is_current_member' => array(
           'name' => 'is_current_member',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Current Membership?') ,
+          'description' => 'Does this status aggregate to current members (e.g. New, Renewed, Grace might all be TRUE... while Unrenewed, Lapsed, Inactive would be FALSE).',
         ) ,
         'is_admin' => array(
           'name' => 'is_admin',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Admin Assigned Only?') ,
+          'description' => 'Is this status for admin/manual assignment only.',
         ) ,
         'weight' => array(
           'name' => 'weight',
@@ -294,17 +305,20 @@ class CRM_Member_DAO_MembershipStatus extends CRM_Core_DAO
           'name' => 'is_default',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Default Status?') ,
+          'description' => 'Assign this status to a membership record if no other status match is found.',
         ) ,
         'is_active' => array(
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Active') ,
+          'description' => 'Is this membership_status enabled.',
           'default' => '1',
         ) ,
         'is_reserved' => array(
           'name' => 'is_reserved',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Reserved') ,
+          'description' => 'Is this membership_status reserved.',
         ) ,
       );
     }

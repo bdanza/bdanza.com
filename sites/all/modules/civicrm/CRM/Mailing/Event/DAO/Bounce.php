@@ -150,12 +150,14 @@ class CRM_Mailing_Event_DAO_Bounce extends CRM_Core_DAO
         'event_queue_id' => array(
           'name' => 'event_queue_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to EventQueue',
           'required' => true,
           'FKClassName' => 'CRM_Mailing_Event_DAO_Queue',
         ) ,
         'bounce_type_id' => array(
           'name' => 'bounce_type_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'What type of bounce was it?',
           'html' => array(
             'type' => 'Select',
           ) ,
@@ -169,6 +171,7 @@ class CRM_Mailing_Event_DAO_Bounce extends CRM_Core_DAO
           'name' => 'bounce_reason',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Bounce Reason') ,
+          'description' => 'The reason the email bounced.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -176,6 +179,7 @@ class CRM_Mailing_Event_DAO_Bounce extends CRM_Core_DAO
           'name' => 'time_stamp',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Time Stamp') ,
+          'description' => 'When this bounce event occurred.',
           'required' => true,
         ) ,
       );

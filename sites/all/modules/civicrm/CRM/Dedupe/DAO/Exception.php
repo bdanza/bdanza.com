@@ -135,18 +135,21 @@ class CRM_Dedupe_DAO_Exception extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Unique dedupe exception id',
           'required' => true,
         ) ,
         'contact_id1' => array(
           'name' => 'contact_id1',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('First Dupe Contact ID') ,
+          'description' => 'FK to Contact ID',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'contact_id2' => array(
           'name' => 'contact_id2',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Second Dupe Contact ID') ,
+          'description' => 'FK to Contact ID',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
       );

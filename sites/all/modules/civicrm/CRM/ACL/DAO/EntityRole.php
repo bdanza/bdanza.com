@@ -147,18 +147,21 @@ class CRM_ACL_DAO_EntityRole extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Entity Role') ,
+          'description' => 'Unique table ID',
           'required' => true,
         ) ,
         'acl_role_id' => array(
           'name' => 'acl_role_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('ACL Role ID') ,
+          'description' => 'Foreign Key to ACL Role (which is an option value pair and hence an implicit FK)',
           'required' => true,
         ) ,
         'entity_table' => array(
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Table') ,
+          'description' => 'Table of the object joined to the ACL Role (Contact or Group)',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -167,12 +170,14 @@ class CRM_ACL_DAO_EntityRole extends CRM_Core_DAO
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('ACL Entity ID') ,
+          'description' => 'ID of the group/contact object being joined',
           'required' => true,
         ) ,
         'is_active' => array(
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('ACL Entity Role is Active') ,
+          'description' => 'Is this property active?',
         ) ,
       );
     }

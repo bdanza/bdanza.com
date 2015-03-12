@@ -175,12 +175,14 @@ class CRM_Core_DAO_Tag extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Tag ID') ,
+          'description' => 'Tag ID',
           'required' => true,
         ) ,
         'name' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Tag Name') ,
+          'description' => 'Name of Tag.',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -189,6 +191,7 @@ class CRM_Core_DAO_Tag extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Description') ,
+          'description' => 'Optional verbose description of the tag.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -196,6 +199,7 @@ class CRM_Core_DAO_Tag extends CRM_Core_DAO
           'name' => 'parent_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Parent Tag') ,
+          'description' => 'Optional parent id for this tag.',
           'default' => 'NULL',
           'FKClassName' => 'CRM_Core_DAO_Tag',
         ) ,
@@ -203,6 +207,7 @@ class CRM_Core_DAO_Tag extends CRM_Core_DAO
           'name' => 'is_selectable',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Display Tag?') ,
+          'description' => 'Is this tag selectable / displayed',
           'default' => '1',
         ) ,
         'is_reserved' => array(
@@ -227,18 +232,21 @@ class CRM_Core_DAO_Tag extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'tag_used_for',
+            'optionEditPath' => 'civicrm/admin/options/tag_used_for',
           )
         ) ,
         'created_id' => array(
           'name' => 'created_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Tag Created By') ,
+          'description' => 'FK to civicrm_contact, who created this tag',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'created_date' => array(
           'name' => 'created_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Tag Created Date') ,
+          'description' => 'Date and time that tag was created.',
         ) ,
       );
     }

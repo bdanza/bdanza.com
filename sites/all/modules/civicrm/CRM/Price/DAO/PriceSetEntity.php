@@ -141,12 +141,14 @@ class CRM_Price_DAO_PriceSetEntity extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Price Set Entity',
           'required' => true,
         ) ,
         'entity_table' => array(
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Table') ,
+          'description' => 'Table which uses this price set',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -154,11 +156,13 @@ class CRM_Price_DAO_PriceSetEntity extends CRM_Core_DAO
         'entity_id' => array(
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Item in table',
           'required' => true,
         ) ,
         'price_set_id' => array(
           'name' => 'price_set_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'price set being used',
           'required' => true,
           'FKClassName' => 'CRM_Price_DAO_PriceSet',
         ) ,

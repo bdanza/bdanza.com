@@ -231,6 +231,7 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Participant ID') ,
+          'description' => 'Participant Id',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_participant.id',
@@ -242,6 +243,7 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contact ID') ,
+          'description' => 'FK to Contact ID',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_participant.contact_id',
@@ -254,6 +256,7 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'event_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Event') ,
+          'description' => 'FK to Event ID',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_participant.event_id',
@@ -266,6 +269,9 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'status_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Participant Status ID') ,
+          'description' => 'Participant status ID. FK to civicrm_participant_status_type. Default of 1 should map to status =
+      Registered.
+    ',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_participant.status_id',
@@ -287,6 +293,7 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'role_id',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Participant Role ID') ,
+          'description' => 'Participant role ID. Implicit FK to civicrm_option_value where option_group = participant_role.',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -300,12 +307,14 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'participant_role',
+            'optionEditPath' => 'civicrm/admin/options/participant_role',
           )
         ) ,
         'participant_register_date' => array(
           'name' => 'register_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Register date') ,
+          'description' => 'When did contact register for event?',
           'import' => true,
           'where' => 'civicrm_participant.register_date',
           'headerPattern' => '/^(r(egister\s)?date)$/i',
@@ -316,6 +325,7 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'source',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Participant Source') ,
+          'description' => 'Source of this event registration.',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -328,6 +338,9 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'fee_level',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Fee level') ,
+          'description' => 'Populate with the label (text) associated with a fee level for paid events with multiple levels. Note that
+      we store the label value and not the key
+    ',
           'import' => true,
           'where' => 'civicrm_participant.fee_level',
           'headerPattern' => '/^(f(ee\s)?level)$/i',
@@ -358,6 +371,7 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'fee_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Fee Amount') ,
+          'description' => 'actual processor fee if known - may be 0.',
           'precision' => array(
             20,
             2
@@ -372,6 +386,7 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'registered_by_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Registered By ID') ,
+          'description' => 'FK to Participant ID',
           'import' => true,
           'where' => 'civicrm_participant.registered_by_id',
           'headerPattern' => '',
@@ -384,6 +399,7 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'discount_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Discount ID') ,
+          'description' => 'FK to Discount ID',
           'default' => 'NULL',
           'FKClassName' => 'CRM_Core_DAO_Discount',
         ) ,
@@ -391,6 +407,7 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'fee_currency',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Fee Currency') ,
+          'description' => '3 character string, value derived from config setting.',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
           'import' => true,
@@ -413,6 +430,7 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'campaign_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Campaign') ,
+          'description' => 'The campaign for which this participant has been registered.',
           'import' => true,
           'where' => 'civicrm_participant.campaign_id',
           'headerPattern' => '',
@@ -429,17 +447,20 @@ class CRM_Event_DAO_Participant extends CRM_Core_DAO
           'name' => 'discount_amount',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Discount Amount') ,
+          'description' => 'Discount Amount',
         ) ,
         'cart_id' => array(
           'name' => 'cart_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Event Cart ID') ,
+          'description' => 'FK to civicrm_event_carts',
           'FKClassName' => 'CRM_Event_Cart_DAO_Cart',
         ) ,
         'must_wait' => array(
           'name' => 'must_wait',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Must Wait on List') ,
+          'description' => 'On Waiting List',
         ) ,
       );
     }

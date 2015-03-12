@@ -129,43 +129,45 @@
           }
           else {
             schedule.mode = 'now';
+            schedule.datetime = '';
           }
-          validate();
         };
 
         var updateParent = (function () {
           switch (schedule.mode) {
             case 'now':
               ngModel.$setViewValue(null);
-              schedule.datetime = ' ';
+              schedule.datetime = '';
               break;
             case 'at':
+              schedule.datetime = schedule.datetime || '?';
               ngModel.$setViewValue(schedule.datetime);
               break;
             default:
               throw 'Unrecognized schedule mode: ' + schedule.mode;
           }
-          validate();
         });
 
-        function validate() {
-          switch (schedule.mode) {
-            case 'now':
-              ngModel.$setValidity('empty', true);
-              break;
-            case 'at':
-              ngModel.$setValidity('empty', !_.isEmpty(schedule.datetime) && schedule.datetime !== ' ');
-              break;
-            default:
-              throw 'Unrecognized schedule mode: ' + schedule.mode;
-          }
-        }
+        element
+          // Open datepicker when clicking "At" radio
+          .on('click', ':radio[value=at]', function() {
+            $('.crm-form-date', element).focus();
+          })
+          // Reset mode if user entered an invalid date
+          .on('change', '.crm-hidden-date', function(e, context) {
+            if (context === 'userInput' && $(this).val() === '' && $(this).siblings('.crm-form-date').val().length) {
+              schedule.mode = 'at';
+              schedule.datetime = '?';
+            }
+          });
 
         $scope.$watch(attrs.crmMailingRadioDate + '.mode', updateParent);
         $scope.$watch(attrs.crmMailingRadioDate + '.datetime', function (newValue, oldValue) {
           // automatically switch mode based on datetime entry
-          if (oldValue != newValue) {
-            if (_.isEmpty(newValue) || newValue == " ") {
+          if (typeof oldValue === 'undefined') oldValue = '';
+          if (typeof newValue === 'undefined') newValue = '';
+          if (oldValue !== newValue) {
+            if (_.isEmpty(newValue)) {
               schedule.mode = 'now';
             }
             else {

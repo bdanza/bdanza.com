@@ -114,12 +114,14 @@ class CRM_Core_DAO_AddressFormat extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Address Format Id',
           'required' => true,
         ) ,
         'format' => array(
           'name' => 'format',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Address Format') ,
+          'description' => 'The format of an address',
         ) ,
       );
     }

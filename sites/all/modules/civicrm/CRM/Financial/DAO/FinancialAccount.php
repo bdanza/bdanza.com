@@ -208,12 +208,14 @@ class CRM_Financial_DAO_FinancialAccount extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Account ID') ,
+          'description' => 'ID',
           'required' => true,
         ) ,
         'name' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Financial Account Name') ,
+          'description' => 'Financial Account Name.',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -222,12 +224,14 @@ class CRM_Financial_DAO_FinancialAccount extends CRM_Core_DAO
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contact ID') ,
+          'description' => 'FK to Contact ID that is responsible for the funds in this account',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'financial_account_type_id' => array(
           'name' => 'financial_account_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Account Type') ,
+          'description' => 'pseudo FK into civicrm_option_value.',
           'required' => true,
           'default' => '3',
           'html' => array(
@@ -235,12 +239,14 @@ class CRM_Financial_DAO_FinancialAccount extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'financial_account_type',
+            'optionEditPath' => 'civicrm/admin/options/financial_account_type',
           )
         ) ,
         'accounting_code' => array(
           'name' => 'accounting_code',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Accounting Code') ,
+          'description' => 'Optional value for mapping monies owed and received to accounting system codes.',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'export' => true,
@@ -252,6 +258,7 @@ class CRM_Financial_DAO_FinancialAccount extends CRM_Core_DAO
           'name' => 'account_type_code',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Account Type Code') ,
+          'description' => 'Optional value for mapping account types to accounting system account categories (QuickBooks Account Type Codes for example).',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'export' => true,
@@ -263,6 +270,7 @@ class CRM_Financial_DAO_FinancialAccount extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Financial Account Description') ,
+          'description' => 'Financial Type Description.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -270,28 +278,33 @@ class CRM_Financial_DAO_FinancialAccount extends CRM_Core_DAO
           'name' => 'parent_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Account Parent') ,
+          'description' => 'Parent ID in account hierarchy',
           'FKClassName' => 'CRM_Financial_DAO_FinancialAccount',
         ) ,
         'is_header_account' => array(
           'name' => 'is_header_account',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Header Financial Account?') ,
+          'description' => 'Is this a header account which does not allow transactions to be posted against it directly, but only to its sub-accounts?',
         ) ,
         'is_deductible' => array(
           'name' => 'is_deductible',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Deductible Financial Account?') ,
+          'description' => 'Is this account tax-deductible?',
           'default' => '1',
         ) ,
         'is_tax' => array(
           'name' => 'is_tax',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Tax Financial Account?') ,
+          'description' => 'Is this account for taxes?',
         ) ,
         'tax_rate' => array(
           'name' => 'tax_rate',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Financial Account Tax Rate') ,
+          'description' => 'The percentage of the total_amount that is due for this tax.',
           'precision' => array(
             10,
             8
@@ -301,16 +314,19 @@ class CRM_Financial_DAO_FinancialAccount extends CRM_Core_DAO
           'name' => 'is_reserved',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Reserved Financial Account?') ,
+          'description' => 'Is this a predefined system object?',
         ) ,
         'is_active' => array(
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Financial Account is Active') ,
+          'description' => 'Is this property active?',
         ) ,
         'is_default' => array(
           'name' => 'is_default',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Default Financial Account') ,
+          'description' => 'Is this account the default one (or default tax one) for its financial_account_type?',
         ) ,
       );
     }

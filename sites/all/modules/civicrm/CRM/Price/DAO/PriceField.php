@@ -176,7 +176,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
    */
   public $javascript;
   /**
-   * Implicit FK to civicrm_option_group with name = \'visibility\'
+   * Implicit FK to civicrm_option_group with name = 'visibility'
    *
    * @var int unsigned
    */
@@ -218,12 +218,14 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Price Field ID') ,
+          'description' => 'Price Field',
           'required' => true,
         ) ,
         'price_set_id' => array(
           'name' => 'price_set_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Price Set') ,
+          'description' => 'FK to civicrm_price_set',
           'required' => true,
           'FKClassName' => 'CRM_Price_DAO_PriceSet',
         ) ,
@@ -231,6 +233,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Variable name/programmatic handle for this field.',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -242,6 +245,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'label',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Label') ,
+          'description' => 'Text for form field label (also friendly name for administering this field).',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -267,6 +271,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'is_enter_qty',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Price Field Quantity Required?') ,
+          'description' => 'Enter a quantity for this field?',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -275,6 +280,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'help_pre',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Price Field Pre Text') ,
+          'description' => 'Description and/or help text to display before this field.',
           'rows' => 4,
           'cols' => 80,
           'html' => array(
@@ -285,6 +291,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'help_post',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Price Field Post Test') ,
+          'description' => 'Description and/or help text to display after this field.',
           'rows' => 4,
           'cols' => 80,
           'html' => array(
@@ -295,6 +302,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'weight',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Order') ,
+          'description' => 'Order in which the fields should appear',
           'default' => '1',
           'html' => array(
             'type' => 'Select',
@@ -304,6 +312,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'is_display_amounts',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Price Field Show Amounts?') ,
+          'description' => 'Should the price be displayed next to the label for each option?',
           'default' => '1',
           'html' => array(
             'type' => 'CheckBox',
@@ -313,6 +322,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'options_per_line',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Price Field Options per Row') ,
+          'description' => 'number of options per line for checkbox and radio',
           'default' => '1',
           'html' => array(
             'type' => 'Text',
@@ -322,6 +332,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Price Field Is Active?') ,
+          'description' => 'Is this price field active',
           'default' => '1',
           'html' => array(
             'type' => 'CheckBox',
@@ -331,6 +342,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'is_required',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Price Field is Required?') ,
+          'description' => 'Is this price field required (value must be > 1)',
           'default' => '1',
           'html' => array(
             'type' => 'CheckBox',
@@ -340,6 +352,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'active_on',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Price Field Start Date') ,
+          'description' => 'If non-zero, do not show this field before the date specified',
           'default' => 'NULL',
           'html' => array(
             'type' => 'CheckBox',
@@ -349,6 +362,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'expire_on',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Price Field End Date') ,
+          'description' => 'If non-zero, do not show this field after the date specified',
           'default' => 'NULL',
           'html' => array(
             'type' => 'Select Date',
@@ -358,6 +372,7 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'javascript',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Price Field Javascript') ,
+          'description' => 'Optional scripting attributes for field',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -368,12 +383,14 @@ class CRM_Price_DAO_PriceField extends CRM_Core_DAO
           'name' => 'visibility_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Price Field Visibility') ,
+          'description' => 'Implicit FK to civicrm_option_group with name = \'visibility\'',
           'default' => '1',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'visibility',
+            'optionEditPath' => 'civicrm/admin/options/visibility',
           )
         ) ,
       );

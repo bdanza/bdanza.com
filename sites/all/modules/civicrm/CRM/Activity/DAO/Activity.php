@@ -260,6 +260,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Activity ID') ,
+          'description' => 'Unique  Other Activity ID',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_activity.id',
@@ -271,11 +272,13 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'source_record_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Source Record') ,
+          'description' => 'Artificial FK to original transaction (e.g. contribution) IF it is not an Activity. Table can be figured out through activity_type_id, and further through component registry.',
         ) ,
         'activity_type_id' => array(
           'name' => 'activity_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Activity Type ID') ,
+          'description' => 'FK to civicrm_option_value.id, that has to be valid, registered activity type.',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_activity.activity_type_id',
@@ -288,12 +291,14 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'activity_type',
+            'optionEditPath' => 'civicrm/admin/options/activity_type',
           )
         ) ,
         'activity_subject' => array(
           'name' => 'subject',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Subject') ,
+          'description' => 'The subject/purpose/short description of the activity.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -309,6 +314,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'activity_date_time',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Activity Date') ,
+          'description' => 'Date and time this activity is scheduled to occur. Formerly named scheduled_date_time.',
           'import' => true,
           'where' => 'civicrm_activity.activity_date_time',
           'headerPattern' => '/(activity.)?date(.time$)?/i',
@@ -322,6 +328,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'duration',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Duration') ,
+          'description' => 'Planned or actual duration of activity expressed in minutes. Conglomerate of former duration_hours and duration_minutes.',
           'import' => true,
           'where' => 'civicrm_activity.duration',
           'headerPattern' => '/(activity.)?duration(s)?$/i',
@@ -335,6 +342,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'location',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Location') ,
+          'description' => 'Location of the activity (optional, open text).',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -350,6 +358,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'phone_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Phone (called) ID') ,
+          'description' => 'Phone ID of the number called (optional - used if an existing phone number is selected).',
           'FKClassName' => 'CRM_Core_DAO_Phone',
           'html' => array(
             'type' => 'Autocomplete-Select',
@@ -359,6 +368,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'phone_number',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Phone (called) Number') ,
+          'description' => 'Phone number in case the number does not exist in the civicrm_phone table.',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'html' => array(
@@ -369,6 +379,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'details',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Details') ,
+          'description' => 'Details about the activity (agenda, notes, etc).',
           'rows' => 8,
           'cols' => 60,
           'import' => true,
@@ -384,6 +395,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'status_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Activity Status') ,
+          'description' => 'ID of the status this activity is currently in. Foreign key to civicrm_option_value.',
           'import' => true,
           'where' => 'civicrm_activity.status_id',
           'headerPattern' => '/(activity.)?status(.label$)?/i',
@@ -394,23 +406,27 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'activity_status',
+            'optionEditPath' => 'civicrm/admin/options/activity_status',
           )
         ) ,
         'priority_id' => array(
           'name' => 'priority_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Priority') ,
+          'description' => 'ID of the priority given to this activity. Foreign key to civicrm_option_value.',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'priority',
+            'optionEditPath' => 'civicrm/admin/options/priority',
           )
         ) ,
         'parent_id' => array(
           'name' => 'parent_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Parent Activity Id') ,
+          'description' => 'Parent meeting ID (if this is a follow-up item). This is not currently implemented',
           'FKClassName' => 'CRM_Activity_DAO_Activity',
         ) ,
         'activity_is_test' => array(
@@ -430,12 +446,14 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'medium_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Activity Medium') ,
+          'description' => 'Activity Medium, Implicit FK to civicrm_option_value where option_group = encounter_medium.',
           'default' => 'NULL',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'encounter_medium',
+            'optionEditPath' => 'civicrm/admin/options/encounter_medium',
           )
         ) ,
         'is_auto' => array(
@@ -447,6 +465,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'relationship_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Relationship Id') ,
+          'description' => 'FK to Relationship ID',
           'default' => 'NULL',
           'FKClassName' => 'CRM_Contact_DAO_Relationship',
         ) ,
@@ -468,12 +487,14 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'original_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Original Activity ID ') ,
+          'description' => 'Activity ID of the first activity record in versioning chain.',
           'FKClassName' => 'CRM_Activity_DAO_Activity',
         ) ,
         'activity_result' => array(
           'name' => 'result',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Result') ,
+          'description' => 'Currently being used to store result id for survey activity, FK to option value.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -497,6 +518,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'campaign_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Campaign') ,
+          'description' => 'The campaign for which this activity has been triggered.',
           'import' => true,
           'where' => 'civicrm_activity.campaign_id',
           'headerPattern' => '',
@@ -516,6 +538,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           'name' => 'engagement_level',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Engagement Index') ,
+          'description' => 'Assign a specific level of engagement to this activity. Used for tracking constituents in ladder of engagement.',
           'import' => true,
           'where' => 'civicrm_activity.engagement_level',
           'headerPattern' => '',
@@ -526,6 +549,7 @@ class CRM_Activity_DAO_Activity extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'engagement_index',
+            'optionEditPath' => 'civicrm/admin/options/engagement_index',
           )
         ) ,
         'weight' => array(

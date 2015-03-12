@@ -139,11 +139,13 @@ class CRM_Mailing_DAO_TrackableURL extends CRM_Core_DAO
           'name' => 'url',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Url') ,
+          'description' => 'The URL to be tracked.',
           'required' => true,
         ) ,
         'mailing_id' => array(
           'name' => 'mailing_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to the mailing',
           'required' => true,
           'FKClassName' => 'CRM_Mailing_DAO_Mailing',
         ) ,

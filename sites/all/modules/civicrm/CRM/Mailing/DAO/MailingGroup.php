@@ -165,6 +165,7 @@ class CRM_Mailing_DAO_MailingGroup extends CRM_Core_DAO
           'name' => 'mailing_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing') ,
+          'description' => 'The ID of a previous mailing to include/exclude recipients.',
           'required' => true,
           'FKClassName' => 'CRM_Mailing_DAO_Mailing',
         ) ,
@@ -172,6 +173,7 @@ class CRM_Mailing_DAO_MailingGroup extends CRM_Core_DAO
           'name' => 'group_type',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Mailing Group Type') ,
+          'description' => 'Are the members of the group included or excluded?.',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'html' => array(
@@ -185,6 +187,7 @@ class CRM_Mailing_DAO_MailingGroup extends CRM_Core_DAO
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Mailing Group Entity Table') ,
+          'description' => 'Name of table where item being referenced is stored.',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -193,17 +196,20 @@ class CRM_Mailing_DAO_MailingGroup extends CRM_Core_DAO
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Group Entity') ,
+          'description' => 'Foreign key to the referenced item.',
           'required' => true,
         ) ,
         'search_id' => array(
           'name' => 'search_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Group Search') ,
+          'description' => 'The filtering search. custom search id or -1 for civicrm api search',
         ) ,
         'search_args' => array(
           'name' => 'search_args',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Mailing Group Search Arguments') ,
+          'description' => 'The arguments to be sent to the search function',
         ) ,
       );
     }

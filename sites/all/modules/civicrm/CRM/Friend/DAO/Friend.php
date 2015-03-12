@@ -174,12 +174,14 @@ class CRM_Friend_DAO_Friend extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Friend ID',
           'required' => true,
         ) ,
         'entity_table' => array(
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Table') ,
+          'description' => 'Name of table where item being referenced is stored.',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -187,6 +189,7 @@ class CRM_Friend_DAO_Friend extends CRM_Core_DAO
         'entity_id' => array(
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Foreign key to the referenced item.',
           'required' => true,
         ) ,
         'title' => array(
@@ -203,6 +206,7 @@ class CRM_Friend_DAO_Friend extends CRM_Core_DAO
           'name' => 'intro',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Intro') ,
+          'description' => 'Introductory message to contributor or participant displayed on the Tell a Friend form.',
           'html' => array(
             'type' => 'Text',
           ) ,
@@ -211,6 +215,7 @@ class CRM_Friend_DAO_Friend extends CRM_Core_DAO
           'name' => 'suggested_message',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Suggested Message') ,
+          'description' => 'Suggested message to friends, provided as default on the Tell A Friend form.',
           'html' => array(
             'type' => 'Text',
           ) ,
@@ -219,6 +224,7 @@ class CRM_Friend_DAO_Friend extends CRM_Core_DAO
           'name' => 'general_link',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('General Link') ,
+          'description' => 'URL for general info about the organization - included in the email sent to friends.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -234,6 +240,7 @@ class CRM_Friend_DAO_Friend extends CRM_Core_DAO
           'name' => 'thankyou_title',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Thankyou Title') ,
+          'description' => 'Text for Tell a Friend thank you page header and HTML title.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -244,6 +251,7 @@ class CRM_Friend_DAO_Friend extends CRM_Core_DAO
           'name' => 'thankyou_text',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Thankyou Text') ,
+          'description' => 'Thank you message displayed on success page.',
           'html' => array(
             'type' => 'Text',
           ) ,

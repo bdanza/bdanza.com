@@ -176,6 +176,7 @@ class CRM_Contribute_DAO_ContributionSoft extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Soft Contribution ID') ,
+          'description' => 'Soft Contribution ID',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_contribution_soft.id',
@@ -187,6 +188,7 @@ class CRM_Contribute_DAO_ContributionSoft extends CRM_Core_DAO
           'name' => 'contribution_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Soft Contribution - Contribution') ,
+          'description' => 'FK to contribution table.',
           'required' => true,
           'FKClassName' => 'CRM_Contribute_DAO_Contribution',
         ) ,
@@ -194,6 +196,7 @@ class CRM_Contribute_DAO_ContributionSoft extends CRM_Core_DAO
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contact ID') ,
+          'description' => 'FK to Contact ID',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_contribution_soft.contact_id',
@@ -206,6 +209,7 @@ class CRM_Contribute_DAO_ContributionSoft extends CRM_Core_DAO
           'name' => 'amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Soft Contribution Amount') ,
+          'description' => 'Amount of this soft contribution.',
           'required' => true,
           'precision' => array(
             20,
@@ -221,6 +225,7 @@ class CRM_Contribute_DAO_ContributionSoft extends CRM_Core_DAO
           'name' => 'currency',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Soft Contribution Currency') ,
+          'description' => '3 character string, value from config setting or input via user.',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
           'default' => 'NULL',
@@ -238,6 +243,7 @@ class CRM_Contribute_DAO_ContributionSoft extends CRM_Core_DAO
           'name' => 'pcp_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Soft Contribution PCP') ,
+          'description' => 'FK to civicrm_pcp.id',
           'default' => 'NULL',
           'FKClassName' => 'CRM_PCP_DAO_PCP',
           'pseudoconstant' => array(
@@ -271,9 +277,11 @@ class CRM_Contribute_DAO_ContributionSoft extends CRM_Core_DAO
           'name' => 'soft_credit_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Soft Credit Type') ,
+          'description' => 'Soft Credit Type ID.Implicit FK to civicrm_option_value where option_group = soft_credit_type.',
           'default' => 'NULL',
           'pseudoconstant' => array(
             'optionGroupName' => 'soft_credit_type',
+            'optionEditPath' => 'civicrm/admin/options/soft_credit_type',
           )
         ) ,
       );

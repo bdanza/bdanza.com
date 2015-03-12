@@ -138,6 +138,7 @@ class CRM_Mailing_Event_DAO_Reply extends CRM_Core_DAO
         'event_queue_id' => array(
           'name' => 'event_queue_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to EventQueue',
           'required' => true,
           'FKClassName' => 'CRM_Mailing_Event_DAO_Queue',
         ) ,
@@ -145,6 +146,7 @@ class CRM_Mailing_Event_DAO_Reply extends CRM_Core_DAO
           'name' => 'time_stamp',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Time Stamp') ,
+          'description' => 'When this reply event occurred.',
           'required' => true,
         ) ,
       );

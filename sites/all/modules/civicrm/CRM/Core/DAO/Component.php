@@ -121,12 +121,14 @@ class CRM_Core_DAO_Component extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Component ID',
           'required' => true,
         ) ,
         'name' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Component name') ,
+          'description' => 'Name of the component.',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -135,6 +137,9 @@ class CRM_Core_DAO_Component extends CRM_Core_DAO
           'name' => 'namespace',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Namespace reserved for component.') ,
+          'description' => 'Path to components main directory in a form of a class
+      namespace.
+    ',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
         ) ,

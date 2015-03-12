@@ -135,11 +135,13 @@ class CRM_Contact_DAO_GroupContactCache extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'primary key',
           'required' => true,
         ) ,
         'group_id' => array(
           'name' => 'group_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to civicrm_group',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Group',
           'html' => array(
@@ -154,6 +156,7 @@ class CRM_Contact_DAO_GroupContactCache extends CRM_Core_DAO
         'contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to civicrm_contact',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,

@@ -132,12 +132,14 @@ class CRM_Core_DAO_Persistent extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Persistent Record Id',
           'required' => true,
         ) ,
         'context' => array(
           'name' => 'context',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Context') ,
+          'description' => 'Context for which name data pair is to be stored',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -146,6 +148,7 @@ class CRM_Core_DAO_Persistent extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Name of Context',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -154,10 +157,12 @@ class CRM_Core_DAO_Persistent extends CRM_Core_DAO
           'name' => 'data',
           'type' => CRM_Utils_Type::T_LONGTEXT,
           'title' => ts('Data') ,
+          'description' => 'data associated with name',
         ) ,
         'is_config' => array(
           'name' => 'is_config',
           'type' => CRM_Utils_Type::T_BOOLEAN,
+          'description' => 'Config Settings',
           'required' => true,
         ) ,
       );

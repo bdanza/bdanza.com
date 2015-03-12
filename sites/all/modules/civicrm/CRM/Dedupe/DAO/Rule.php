@@ -152,11 +152,13 @@ class CRM_Dedupe_DAO_Rule extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Unique dedupe rule id',
           'required' => true,
         ) ,
         'dedupe_rule_group_id' => array(
           'name' => 'dedupe_rule_group_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'The id of the rule group this rule belongs to',
           'required' => true,
           'FKClassName' => 'CRM_Dedupe_DAO_RuleGroup',
         ) ,
@@ -164,6 +166,7 @@ class CRM_Dedupe_DAO_Rule extends CRM_Core_DAO
           'name' => 'rule_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Rule Table') ,
+          'description' => 'The name of the table this rule is about',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -172,6 +175,7 @@ class CRM_Dedupe_DAO_Rule extends CRM_Core_DAO
           'name' => 'rule_field',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Rule Field') ,
+          'description' => 'The name of the field of the table referenced in rule_table',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -180,11 +184,13 @@ class CRM_Dedupe_DAO_Rule extends CRM_Core_DAO
           'name' => 'rule_length',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Rule Length') ,
+          'description' => 'The lenght of the matching substring',
         ) ,
         'rule_weight' => array(
           'name' => 'rule_weight',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Rule Weight') ,
+          'description' => 'The weight of the rule',
           'required' => true,
         ) ,
       );

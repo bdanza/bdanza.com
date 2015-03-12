@@ -168,12 +168,14 @@ class CRM_Core_DAO_MessageTemplate extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Message Template ID') ,
+          'description' => 'Message Template ID',
           'required' => true,
         ) ,
         'msg_title' => array(
           'name' => 'msg_title',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Message Template Title') ,
+          'description' => 'Descriptive title of message',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -181,11 +183,13 @@ class CRM_Core_DAO_MessageTemplate extends CRM_Core_DAO
           'name' => 'msg_subject',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Message Template Subject') ,
+          'description' => 'Subject for email message.',
         ) ,
         'msg_text' => array(
           'name' => 'msg_text',
           'type' => CRM_Utils_Type::T_LONGTEXT,
           'title' => ts('Message Template Text') ,
+          'description' => 'Text formatted message',
           'html' => array(
             'type' => 'TextArea',
           ) ,
@@ -194,6 +198,7 @@ class CRM_Core_DAO_MessageTemplate extends CRM_Core_DAO
           'name' => 'msg_html',
           'type' => CRM_Utils_Type::T_LONGTEXT,
           'title' => ts('Message Template HTML') ,
+          'description' => 'HTML formatted message',
           'html' => array(
             'type' => 'RichTextEditor',
           ) ,
@@ -208,29 +213,35 @@ class CRM_Core_DAO_MessageTemplate extends CRM_Core_DAO
           'name' => 'workflow_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Message Template Workflow') ,
+          'description' => 'a pseudo-FK to civicrm_option_value',
         ) ,
         'is_default' => array(
           'name' => 'is_default',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Message Template Is Default?') ,
+          'description' => 'is this the default message template for the workflow referenced by workflow_id?',
           'default' => '1',
         ) ,
         'is_reserved' => array(
           'name' => 'is_reserved',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Message Template Is Reserved?') ,
+          'description' => 'is this the reserved message template which we ship for the workflow referenced by workflow_id?',
         ) ,
         'is_sms' => array(
           'name' => 'is_sms',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Message Template is used for SMS?') ,
+          'description' => 'Is this message template used for sms?',
         ) ,
         'pdf_format_id' => array(
           'name' => 'pdf_format_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Message Template Format') ,
+          'description' => 'a pseudo-FK to civicrm_option_value containing PDF Page Format.',
           'pseudoconstant' => array(
             'optionGroupName' => 'pdf_format',
+            'optionEditPath' => 'civicrm/admin/options/pdf_format',
           )
         ) ,
       );

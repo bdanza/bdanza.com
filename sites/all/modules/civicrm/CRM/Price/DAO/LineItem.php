@@ -205,12 +205,14 @@ class CRM_Price_DAO_LineItem extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Line Item ID') ,
+          'description' => 'Line Item',
           'required' => true,
         ) ,
         'entity_table' => array(
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Line Item Entity Type') ,
+          'description' => 'table which has the transaction',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -219,24 +221,28 @@ class CRM_Price_DAO_LineItem extends CRM_Core_DAO
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Line Item Entity') ,
+          'description' => 'entry in table',
           'required' => true,
         ) ,
         'contribution_id' => array(
           'name' => 'contribution_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Line Item Contribution') ,
+          'description' => 'FK to civicrm_contribution',
           'FKClassName' => 'CRM_Contribute_DAO_Contribution',
         ) ,
         'price_field_id' => array(
           'name' => 'price_field_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Line Item Price Field') ,
+          'description' => 'FK to civicrm_price_field',
           'FKClassName' => 'CRM_Price_DAO_PriceField',
         ) ,
         'label' => array(
           'name' => 'label',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Line Item Label') ,
+          'description' => 'descriptive label for item - from price_field_value.label',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'default' => 'NULL',
@@ -248,6 +254,7 @@ class CRM_Price_DAO_LineItem extends CRM_Core_DAO
           'name' => 'qty',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Line Item Quantity') ,
+          'description' => 'How many items ordered',
           'required' => true,
           'precision' => array(
             20,
@@ -261,6 +268,7 @@ class CRM_Price_DAO_LineItem extends CRM_Core_DAO
           'name' => 'unit_price',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Unit Price') ,
+          'description' => 'price of each item',
           'required' => true,
           'precision' => array(
             20,
@@ -274,6 +282,7 @@ class CRM_Price_DAO_LineItem extends CRM_Core_DAO
           'name' => 'line_total',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Line Item Total') ,
+          'description' => 'qty * unit_price',
           'required' => true,
           'precision' => array(
             20,
@@ -284,6 +293,7 @@ class CRM_Price_DAO_LineItem extends CRM_Core_DAO
           'name' => 'participant_count',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Line Item Participant Count') ,
+          'description' => 'Participant count for field',
           'default' => 'NULL',
           'html' => array(
             'type' => 'Text',
@@ -293,6 +303,7 @@ class CRM_Price_DAO_LineItem extends CRM_Core_DAO
           'name' => 'price_field_value_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Line Item Option') ,
+          'description' => 'FK to civicrm_price_field_value',
           'default' => 'NULL',
           'FKClassName' => 'CRM_Price_DAO_PriceFieldValue',
         ) ,
@@ -300,6 +311,7 @@ class CRM_Price_DAO_LineItem extends CRM_Core_DAO
           'name' => 'financial_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Type') ,
+          'description' => 'FK to Financial Type.',
           'default' => 'NULL',
           'FKClassName' => 'CRM_Financial_DAO_FinancialType',
           'html' => array(
@@ -315,6 +327,7 @@ class CRM_Price_DAO_LineItem extends CRM_Core_DAO
           'name' => 'deductible_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Deductible Amount') ,
+          'description' => 'Tax-deductible portion of the amount',
           'required' => true,
           'precision' => array(
             20,
@@ -329,6 +342,7 @@ class CRM_Price_DAO_LineItem extends CRM_Core_DAO
           'name' => 'tax_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Tax Amount') ,
+          'description' => 'tax of each item',
           'precision' => array(
             20,
             2

@@ -164,6 +164,7 @@ class CRM_Case_DAO_Case extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Case ID') ,
+          'description' => 'Unique Case ID',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_case.id',
@@ -175,6 +176,7 @@ class CRM_Case_DAO_Case extends CRM_Core_DAO
           'name' => 'case_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Case Type') ,
+          'description' => 'FK to civicrm_case_type.id',
           'import' => true,
           'where' => 'civicrm_case.case_type_id',
           'headerPattern' => '',
@@ -194,6 +196,7 @@ class CRM_Case_DAO_Case extends CRM_Core_DAO
           'name' => 'subject',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Case Subject') ,
+          'description' => 'Short name of the case.',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -209,6 +212,7 @@ class CRM_Case_DAO_Case extends CRM_Core_DAO
           'name' => 'start_date',
           'type' => CRM_Utils_Type::T_DATE,
           'title' => ts('Case Start Date') ,
+          'description' => 'Date on which given case starts.',
           'import' => true,
           'where' => 'civicrm_case.start_date',
           'headerPattern' => '',
@@ -222,6 +226,7 @@ class CRM_Case_DAO_Case extends CRM_Core_DAO
           'name' => 'end_date',
           'type' => CRM_Utils_Type::T_DATE,
           'title' => ts('Case End Date') ,
+          'description' => 'Date on which given case ends.',
           'import' => true,
           'where' => 'civicrm_case.end_date',
           'headerPattern' => '',
@@ -235,6 +240,7 @@ class CRM_Case_DAO_Case extends CRM_Core_DAO
           'name' => 'details',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Details') ,
+          'description' => 'Details about the meeting (agenda, notes, etc).',
           'rows' => 8,
           'cols' => 60,
           'html' => array(
@@ -245,6 +251,7 @@ class CRM_Case_DAO_Case extends CRM_Core_DAO
           'name' => 'status_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Case Status') ,
+          'description' => 'Id of case status.',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_case.status_id',
@@ -256,6 +263,7 @@ class CRM_Case_DAO_Case extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'case_status',
+            'optionEditPath' => 'civicrm/admin/options/case_status',
           )
         ) ,
         'case_deleted' => array(

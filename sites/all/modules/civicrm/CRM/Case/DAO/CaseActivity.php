@@ -135,17 +135,20 @@ class CRM_Case_DAO_CaseActivity extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Unique case-activity association id',
           'required' => true,
         ) ,
         'case_id' => array(
           'name' => 'case_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Case ID of case-activity association.',
           'required' => true,
           'FKClassName' => 'CRM_Case_DAO_Case',
         ) ,
         'activity_id' => array(
           'name' => 'activity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Activity ID of case-activity association.',
           'required' => true,
           'FKClassName' => 'CRM_Activity_DAO_Activity',
         ) ,

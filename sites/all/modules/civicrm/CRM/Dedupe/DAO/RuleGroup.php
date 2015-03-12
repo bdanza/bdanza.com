@@ -144,12 +144,14 @@ class CRM_Dedupe_DAO_RuleGroup extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Unique dedupe rule group id',
           'required' => true,
         ) ,
         'contact_type' => array(
           'name' => 'contact_type',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Contact Type') ,
+          'description' => 'The type of contacts this group applies to',
           'maxlength' => 12,
           'size' => CRM_Utils_Type::TWELVE,
           'html' => array(
@@ -166,12 +168,14 @@ class CRM_Dedupe_DAO_RuleGroup extends CRM_Core_DAO
           'name' => 'threshold',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Threshold') ,
+          'description' => 'The weight threshold the sum of the rule weights has to cross to consider two contacts the same',
           'required' => true,
         ) ,
         'used' => array(
           'name' => 'used',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Used') ,
+          'description' => 'Whether the rule should be used for cases where usage is Unsupervised, Supervised OR General(programatically)',
           'required' => true,
           'maxlength' => 12,
           'size' => CRM_Utils_Type::TWELVE,
@@ -186,6 +190,7 @@ class CRM_Dedupe_DAO_RuleGroup extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Name of the rule group',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
@@ -193,12 +198,14 @@ class CRM_Dedupe_DAO_RuleGroup extends CRM_Core_DAO
           'name' => 'title',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Title') ,
+          'description' => 'Label of the rule group',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
         'is_reserved' => array(
           'name' => 'is_reserved',
           'type' => CRM_Utils_Type::T_BOOLEAN,
+          'description' => 'Is this a reserved rule - a rule group that has been optimized and cannot be changed by the admin',
         ) ,
       );
     }

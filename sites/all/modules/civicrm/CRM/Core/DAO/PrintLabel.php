@@ -188,6 +188,7 @@ class CRM_Core_DAO_PrintLabel extends CRM_Core_DAO
           'name' => 'title',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Title') ,
+          'description' => 'User title for for this label layout',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -195,6 +196,7 @@ class CRM_Core_DAO_PrintLabel extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'variable name/programmatic handle for this field.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -202,11 +204,13 @@ class CRM_Core_DAO_PrintLabel extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Description') ,
+          'description' => 'Description of this label layout',
         ) ,
         'label_format_name' => array(
           'name' => 'label_format_name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Label Format') ,
+          'description' => 'This refers to name column of civicrm_option_value row in name_badge option group',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -214,46 +218,54 @@ class CRM_Core_DAO_PrintLabel extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'name_badge',
+            'optionEditPath' => 'civicrm/admin/options/name_badge',
           )
         ) ,
         'label_type_id' => array(
           'name' => 'label_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Label Type') ,
+          'description' => 'Implicit FK to civicrm_option_value row in NEW label_type option group',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'label_type',
+            'optionEditPath' => 'civicrm/admin/options/label_type',
           )
         ) ,
         'data' => array(
           'name' => 'data',
           'type' => CRM_Utils_Type::T_LONGTEXT,
           'title' => ts('Data') ,
+          'description' => 'contains json encode configurations options',
         ) ,
         'is_default' => array(
           'name' => 'is_default',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Label is Default?') ,
+          'description' => 'Is this default?',
           'default' => '1',
         ) ,
         'is_active' => array(
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Label Is Active?') ,
+          'description' => 'Is this option active?',
           'default' => '1',
         ) ,
         'is_reserved' => array(
           'name' => 'is_reserved',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Label Reserved?') ,
+          'description' => 'Is this reserved label?',
           'default' => '1',
         ) ,
         'created_id' => array(
           'name' => 'created_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Label Created By') ,
+          'description' => 'FK to civicrm_contact, who created this label layout',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
       );

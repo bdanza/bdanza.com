@@ -133,11 +133,13 @@ class CRM_Event_Cart_DAO_Cart extends CRM_Core_DAO
         'cart_id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Cart Id',
           'required' => true,
         ) ,
         'user_id' => array(
           'name' => 'user_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to civicrm_contact who created this cart',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'completed' => array(

@@ -132,12 +132,14 @@ class CRM_Financial_DAO_Currency extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Currency Id',
           'required' => true,
         ) ,
         'name' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Currency') ,
+          'description' => 'Currency Name',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'import' => true,
@@ -153,6 +155,7 @@ class CRM_Financial_DAO_Currency extends CRM_Core_DAO
           'name' => 'symbol',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Symbol') ,
+          'description' => 'Currency Symbol',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'html' => array(
@@ -163,6 +166,7 @@ class CRM_Financial_DAO_Currency extends CRM_Core_DAO
           'name' => 'numeric_code',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Numeric Code') ,
+          'description' => 'Numeric currency code',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
           'import' => true,
@@ -175,6 +179,7 @@ class CRM_Financial_DAO_Currency extends CRM_Core_DAO
           'name' => 'full_name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Full Name') ,
+          'description' => 'Full currency name',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'html' => array(

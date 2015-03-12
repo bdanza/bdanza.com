@@ -138,12 +138,14 @@ class CRM_Core_DAO_Managed extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Surrogate Key',
           'required' => true,
         ) ,
         'module' => array(
           'name' => 'module',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Module') ,
+          'description' => 'Name of the module which declared this object',
           'required' => true,
           'maxlength' => 127,
           'size' => CRM_Utils_Type::HUGE,
@@ -152,6 +154,7 @@ class CRM_Core_DAO_Managed extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Symbolic name used by the module to identify the object',
           'maxlength' => 127,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -159,6 +162,7 @@ class CRM_Core_DAO_Managed extends CRM_Core_DAO
           'name' => 'entity_type',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Type') ,
+          'description' => 'API entity type',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -166,12 +170,14 @@ class CRM_Core_DAO_Managed extends CRM_Core_DAO
         'entity_id' => array(
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Foreign key to the referenced item.',
           'required' => true,
         ) ,
         'cleanup' => array(
           'name' => 'cleanup',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Cleanup') ,
+          'description' => 'Policy on when to cleanup entity (always, never, unused)',
           'maxlength' => 32,
           'size' => CRM_Utils_Type::MEDIUM,
           'html' => array(

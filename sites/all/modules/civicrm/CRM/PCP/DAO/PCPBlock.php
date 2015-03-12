@@ -195,6 +195,7 @@ class CRM_PCP_DAO_PCPBlock extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'PCP block Id',
           'required' => true,
         ) ,
         'entity_table' => array(
@@ -207,12 +208,14 @@ class CRM_PCP_DAO_PCPBlock extends CRM_Core_DAO
         'entity_id' => array(
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to civicrm_contribution_page.id OR civicrm_event.id',
           'required' => true,
         ) ,
         'target_entity_type' => array(
           'name' => 'target_entity_type',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Target Entity Type') ,
+          'description' => 'The type of entity that this pcp targets',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -221,11 +224,13 @@ class CRM_PCP_DAO_PCPBlock extends CRM_Core_DAO
         'target_entity_id' => array(
           'name' => 'target_entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'The entity that this pcp targets',
           'required' => true,
         ) ,
         'supporter_profile_id' => array(
           'name' => 'supporter_profile_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to civicrm_uf_group.id. Does Personal Campaign Page require manual activation by administrator? (is inactive by default after setup)?',
           'default' => 'NULL',
           'FKClassName' => 'CRM_Core_DAO_UFGroup',
         ) ,
@@ -233,33 +238,39 @@ class CRM_PCP_DAO_PCPBlock extends CRM_Core_DAO
           'name' => 'owner_notify_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Owner Notification') ,
+          'description' => 'FK to civicrm_option_group with name = PCP owner notifications',
           'html' => array(
             'type' => 'Radio',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'pcp_owner_notify',
+            'optionEditPath' => 'civicrm/admin/options/pcp_owner_notify',
           )
         ) ,
         'is_approval_needed' => array(
           'name' => 'is_approval_needed',
           'type' => CRM_Utils_Type::T_BOOLEAN,
+          'description' => 'Does Personal Campaign Page require manual activation by administrator? (is inactive by default after setup)?',
           'default' => 'NULL',
         ) ,
         'is_tellfriend_enabled' => array(
           'name' => 'is_tellfriend_enabled',
           'type' => CRM_Utils_Type::T_BOOLEAN,
+          'description' => 'Does Personal Campaign Page allow using tell a friend?',
           'default' => 'NULL',
         ) ,
         'tellfriend_limit' => array(
           'name' => 'tellfriend_limit',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Tellfriend Limit') ,
+          'description' => 'Maximum recipient fields allowed in tell a friend',
           'default' => 'NULL',
         ) ,
         'link_text' => array(
           'name' => 'link_text',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Link Text') ,
+          'description' => 'Link text for PCP.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'default' => 'NULL',
@@ -267,12 +278,14 @@ class CRM_PCP_DAO_PCPBlock extends CRM_Core_DAO
         'is_active' => array(
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
+          'description' => 'Is Personal Campaign Page Block enabled/active?',
           'default' => '1',
         ) ,
         'notify_email' => array(
           'name' => 'notify_email',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Notify Email') ,
+          'description' => 'If set, notification is automatically emailed to this email-address on create/update Personal Campaign Page',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'default' => 'NULL',

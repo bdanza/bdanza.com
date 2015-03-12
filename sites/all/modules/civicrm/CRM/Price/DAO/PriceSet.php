@@ -190,12 +190,14 @@ class CRM_Price_DAO_PriceSet extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Price Set ID') ,
+          'description' => 'Price Set',
           'required' => true,
         ) ,
         'domain_id' => array(
           'name' => 'domain_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Price Set Domain') ,
+          'description' => 'Which Domain is this price-set for',
           'FKClassName' => 'CRM_Core_DAO_Domain',
           'html' => array(
             'type' => 'Text',
@@ -210,6 +212,7 @@ class CRM_Price_DAO_PriceSet extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Variable name/programmatic handle for this set of price fields.',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -221,6 +224,7 @@ class CRM_Price_DAO_PriceSet extends CRM_Core_DAO
           'name' => 'title',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Price Set Title') ,
+          'description' => 'Displayed title for the Price Set.',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -232,6 +236,7 @@ class CRM_Price_DAO_PriceSet extends CRM_Core_DAO
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Price Set Is Active?') ,
+          'description' => 'Is this price set active',
           'default' => '1',
           'html' => array(
             'type' => 'CheckBox',
@@ -241,6 +246,7 @@ class CRM_Price_DAO_PriceSet extends CRM_Core_DAO
           'name' => 'help_pre',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Price Set Pre Help') ,
+          'description' => 'Description and/or help text to display before fields in form.',
           'rows' => 4,
           'cols' => 80,
           'html' => array(
@@ -251,6 +257,7 @@ class CRM_Price_DAO_PriceSet extends CRM_Core_DAO
           'name' => 'help_post',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Price Set Post Help') ,
+          'description' => 'Description and/or help text to display after fields in form.',
           'rows' => 4,
           'cols' => 80,
           'html' => array(
@@ -261,6 +268,7 @@ class CRM_Price_DAO_PriceSet extends CRM_Core_DAO
           'name' => 'javascript',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Price Set Javascript') ,
+          'description' => 'Optional Javascript script function(s) included on the form with this price_set. Can be used for conditional',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'html' => array(
@@ -271,6 +279,7 @@ class CRM_Price_DAO_PriceSet extends CRM_Core_DAO
           'name' => 'extends',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Price Set Extends') ,
+          'description' => 'What components are using this price set?',
           'required' => true,
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
@@ -287,6 +296,7 @@ class CRM_Price_DAO_PriceSet extends CRM_Core_DAO
           'name' => 'financial_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Type') ,
+          'description' => 'FK to Financial Type(for membership price sets only).',
           'default' => 'NULL',
           'FKClassName' => 'CRM_Financial_DAO_FinancialType',
           'html' => array(
@@ -302,6 +312,7 @@ class CRM_Price_DAO_PriceSet extends CRM_Core_DAO
           'name' => 'is_quick_config',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Price Set Quick Config?') ,
+          'description' => 'Is set if edited on Contribution or Event Page rather than through Manage Price Sets',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -310,6 +321,7 @@ class CRM_Price_DAO_PriceSet extends CRM_Core_DAO
           'name' => 'is_reserved',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Price Set Is Reserved') ,
+          'description' => 'Is this a predefined system price set  (i.e. it can not be deleted, edited)?',
           'html' => array(
             'type' => 'CheckBox',
           ) ,

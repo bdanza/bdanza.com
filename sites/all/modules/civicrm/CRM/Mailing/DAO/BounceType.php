@@ -131,6 +131,7 @@ class CRM_Mailing_DAO_BounceType extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Type of bounce',
           'required' => true,
           'maxlength' => 24,
           'size' => CRM_Utils_Type::MEDIUM,
@@ -139,6 +140,7 @@ class CRM_Mailing_DAO_BounceType extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Description') ,
+          'description' => 'A description of this bounce type',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -146,6 +148,7 @@ class CRM_Mailing_DAO_BounceType extends CRM_Core_DAO
           'name' => 'hold_threshold',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Hold Threshold') ,
+          'description' => 'Number of bounces of this type required before the email address is put on bounce hold',
           'required' => true,
         ) ,
       );

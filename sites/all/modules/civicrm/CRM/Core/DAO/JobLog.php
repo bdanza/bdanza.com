@@ -164,11 +164,13 @@ class CRM_Core_DAO_JobLog extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Job log entry Id',
           'required' => true,
         ) ,
         'domain_id' => array(
           'name' => 'domain_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Which Domain is this scheduled job for',
           'required' => true,
           'FKClassName' => 'CRM_Core_DAO_Domain',
           'pseudoconstant' => array(
@@ -181,15 +183,18 @@ class CRM_Core_DAO_JobLog extends CRM_Core_DAO
           'name' => 'run_time',
           'type' => CRM_Utils_Type::T_TIMESTAMP,
           'title' => ts('Run Time') ,
+          'description' => 'Log entry date',
         ) ,
         'job_id' => array(
           'name' => 'job_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Pointer to job id - not a FK though, just for logging purposes',
         ) ,
         'name' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Title of the job',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -197,6 +202,7 @@ class CRM_Core_DAO_JobLog extends CRM_Core_DAO
           'name' => 'command',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Command') ,
+          'description' => 'Full path to file containing job script',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -204,6 +210,7 @@ class CRM_Core_DAO_JobLog extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Description') ,
+          'description' => 'Title line of log entry',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -211,6 +218,7 @@ class CRM_Core_DAO_JobLog extends CRM_Core_DAO
           'name' => 'data',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Data') ,
+          'description' => 'Potential extended data for specific job run (e.g. tracebacks).',
         ) ,
       );
     }

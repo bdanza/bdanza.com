@@ -158,12 +158,14 @@ class CRM_SMS_DAO_Provider extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('SMS Provider ID') ,
+          'description' => 'SMS Provider ID',
           'required' => true,
         ) ,
         'name' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('SMS Provider Name') ,
+          'description' => 'Provider internal name points to option_value of option_group sms_provider_name',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
@@ -171,6 +173,7 @@ class CRM_SMS_DAO_Provider extends CRM_Core_DAO
           'name' => 'title',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('SMS Provider Title') ,
+          'description' => 'Provider name visible to user',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'html' => array(
@@ -201,6 +204,7 @@ class CRM_SMS_DAO_Provider extends CRM_Core_DAO
           'name' => 'api_type',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('SMS Provider API') ,
+          'description' => 'points to value in civicrm_option_value for group sms_api_type',
           'required' => true,
           'html' => array(
             'type' => 'Select',
@@ -220,6 +224,7 @@ class CRM_SMS_DAO_Provider extends CRM_Core_DAO
           'name' => 'api_params',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('SMS Provider API Params') ,
+          'description' => 'the api params in xml, http or smtp format',
           'html' => array(
             'type' => 'Text',
           ) ,

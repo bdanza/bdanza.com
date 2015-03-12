@@ -163,6 +163,7 @@ class CRM_Core_DAO_Cache extends CRM_Core_DAO
           'name' => 'group_name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Group Name') ,
+          'description' => 'group name for cache element, useful in cleaning cache elements',
           'required' => true,
           'maxlength' => 32,
           'size' => CRM_Utils_Type::MEDIUM,
@@ -171,6 +172,7 @@ class CRM_Core_DAO_Cache extends CRM_Core_DAO
           'name' => 'path',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Path') ,
+          'description' => 'Unique path name for cache element',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -178,10 +180,12 @@ class CRM_Core_DAO_Cache extends CRM_Core_DAO
           'name' => 'data',
           'type' => CRM_Utils_Type::T_LONGTEXT,
           'title' => ts('Data') ,
+          'description' => 'data associated with this path',
         ) ,
         'component_id' => array(
           'name' => 'component_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Component that this menu item belongs to',
           'FKClassName' => 'CRM_Core_DAO_Component',
           'html' => array(
             'type' => 'Select',
@@ -196,11 +200,13 @@ class CRM_Core_DAO_Cache extends CRM_Core_DAO
           'name' => 'created_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Created Date') ,
+          'description' => 'When was the cache item created',
         ) ,
         'expired_date' => array(
           'name' => 'expired_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Expired Date') ,
+          'description' => 'When should the cache item expire',
         ) ,
       );
     }

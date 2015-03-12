@@ -187,6 +187,7 @@ class CRM_Core_DAO_Navigation extends CRM_Core_DAO
         'domain_id' => array(
           'name' => 'domain_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Which Domain is this navigation item for',
           'required' => true,
           'FKClassName' => 'CRM_Core_DAO_Domain',
           'pseudoconstant' => array(
@@ -199,6 +200,7 @@ class CRM_Core_DAO_Navigation extends CRM_Core_DAO
           'name' => 'label',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Label') ,
+          'description' => 'Navigation Title',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -206,6 +208,7 @@ class CRM_Core_DAO_Navigation extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Internal Name',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -213,6 +216,7 @@ class CRM_Core_DAO_Navigation extends CRM_Core_DAO
           'name' => 'url',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Url') ,
+          'description' => 'url in case of custom navigation link',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -220,6 +224,7 @@ class CRM_Core_DAO_Navigation extends CRM_Core_DAO
           'name' => 'permission',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Permission') ,
+          'description' => 'Permission for menu item',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -227,27 +232,32 @@ class CRM_Core_DAO_Navigation extends CRM_Core_DAO
           'name' => 'permission_operator',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Permission Operator') ,
+          'description' => 'Permission Operator',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
         ) ,
         'parent_id' => array(
           'name' => 'parent_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Parent navigation item, used for grouping',
           'FKClassName' => 'CRM_Core_DAO_Navigation',
         ) ,
         'is_active' => array(
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
+          'description' => 'Is this navigation item active?',
         ) ,
         'has_separator' => array(
           'name' => 'has_separator',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Has Separator') ,
+          'description' => 'If separator needs to be added after this menu item',
         ) ,
         'weight' => array(
           'name' => 'weight',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Order') ,
+          'description' => 'Ordering of the navigation items in various blocks.',
         ) ,
       );
     }

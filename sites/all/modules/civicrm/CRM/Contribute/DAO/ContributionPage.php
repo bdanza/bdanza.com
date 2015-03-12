@@ -395,12 +395,14 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contribution Page ID') ,
+          'description' => 'Contribution Id',
           'required' => true,
         ) ,
         'title' => array(
           'name' => 'title',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Contribution Page Title') ,
+          'description' => 'Contribution Page title. For top of page display',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -408,6 +410,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'intro_text',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Contribution Page Introduction Text') ,
+          'description' => 'Text and html allowed. Displayed below title.',
           'rows' => 6,
           'cols' => 50,
           'html' => array(
@@ -418,6 +421,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'financial_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Type') ,
+          'description' => 'default financial type assigned to contributions submitted via this page, e.g. Contribution, Campaign Contribution',
           'FKClassName' => 'CRM_Financial_DAO_FinancialType',
           'html' => array(
             'type' => 'Select',
@@ -432,6 +436,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'payment_processor',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Payment Processor') ,
+          'description' => 'Payment Processors configured for this contribution Page',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -447,28 +452,33 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'is_credit_card_only',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Credit Card Only?') ,
+          'description' => 'if true - processing logic must reject transaction at confirmation stage if pay method != credit card',
         ) ,
         'is_monetary' => array(
           'name' => 'is_monetary',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Monetary') ,
+          'description' => 'if true - allows real-time monetary transactions otherwise non-monetary transactions',
           'default' => '1',
         ) ,
         'is_recur' => array(
           'name' => 'is_recur',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Recurring') ,
+          'description' => 'if true - allows recurring contributions, valid only for PayPal_Standard',
         ) ,
         'is_confirm_enabled' => array(
           'name' => 'is_confirm_enabled',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Confirmation Page?') ,
+          'description' => 'if false, the confirm page in contribution pages gets skipped',
           'default' => '1',
         ) ,
         'recur_frequency_unit' => array(
           'name' => 'recur_frequency_unit',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Recurring Frequency') ,
+          'description' => 'Supported recurring frequency units.',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -476,36 +486,43 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'is_recur_interval',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Support Recurring Intervals') ,
+          'description' => 'if true - supports recurring intervals',
         ) ,
         'is_recur_installments' => array(
           'name' => 'is_recur_installments',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Recurring Installments?') ,
+          'description' => 'if true - asks user for recurring installments',
         ) ,
         'is_pay_later' => array(
           'name' => 'is_pay_later',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Pay Later') ,
+          'description' => 'if true - allows the user to send payment directly to the org later',
         ) ,
         'pay_later_text' => array(
           'name' => 'pay_later_text',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Pay Later Text') ,
+          'description' => 'The text displayed to the user in the main form',
         ) ,
         'pay_later_receipt' => array(
           'name' => 'pay_later_receipt',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Pay Later Receipt') ,
+          'description' => 'The receipt sent to the user instead of the normal receipt text',
         ) ,
         'is_partial_payment' => array(
           'name' => 'is_partial_payment',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Allow Partial Payment') ,
+          'description' => 'is partial payment enabled for this online contribution page',
         ) ,
         'initial_amount_label' => array(
           'name' => 'initial_amount_label',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Initial Amount Label') ,
+          'description' => 'Initial amount label for partial payment',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -513,11 +530,13 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'initial_amount_help_text',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Initial Amount Help Text') ,
+          'description' => 'Initial amount help text for partial payment',
         ) ,
         'min_initial_amount' => array(
           'name' => 'min_initial_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Min Initial Amount') ,
+          'description' => 'Minimum initial amount for partial payment',
           'precision' => array(
             20,
             2
@@ -527,16 +546,19 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'is_allow_other_amount',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Allow Other Amounts') ,
+          'description' => 'if true, page will include an input text field where user can enter their own amount',
         ) ,
         'default_amount_id' => array(
           'name' => 'default_amount_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Default Amount') ,
+          'description' => 'FK to civicrm_option_value.',
         ) ,
         'min_amount' => array(
           'name' => 'min_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Minimum Amount') ,
+          'description' => 'if other amounts allowed, user can configure minimum allowed.',
           'precision' => array(
             20,
             2
@@ -546,6 +568,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'max_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Maximum Amount') ,
+          'description' => 'if other amounts allowed, user can configure maximum allowed.',
           'precision' => array(
             20,
             2
@@ -555,6 +578,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'goal_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Goal Amount') ,
+          'description' => 'The target goal for this page, allows people to build a goal meter',
           'precision' => array(
             20,
             2
@@ -564,6 +588,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'thankyou_title',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Thank-you Title') ,
+          'description' => 'Title for Thank-you page (header title tag, and display at the top of the page).',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -571,6 +596,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'thankyou_text',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Thank-you Text') ,
+          'description' => 'text and html allowed. displayed above result on success page',
           'rows' => 8,
           'cols' => 60,
           'html' => array(
@@ -581,6 +607,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'thankyou_footer',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Thank-you Footer') ,
+          'description' => 'Text and html allowed. displayed at the bottom of the success page. Common usage is to include link(s) to other pages such as tell-a-friend, etc.',
           'rows' => 8,
           'cols' => 60,
           'html' => array(
@@ -591,11 +618,13 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'is_for_organization',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Allow For Organization') ,
+          'description' => 'if true, signup is done on behalf of an organization',
         ) ,
         'for_organization' => array(
           'name' => 'for_organization',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('On Behalf Of Organization') ,
+          'description' => 'This text field is shown when is_for_organization is checked. For example - I am contributing on behalf on an organization.',
           'rows' => 2,
           'cols' => 50,
           'html' => array(
@@ -606,11 +635,13 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'is_email_receipt',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Send email Receipt') ,
+          'description' => 'if true, receipt is automatically emailed to contact on success',
         ) ,
         'receipt_from_name' => array(
           'name' => 'receipt_from_name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Receipt From') ,
+          'description' => 'FROM email name used for receipts generated by contributions to this contribution page.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -618,6 +649,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'receipt_from_email',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Receipt From email') ,
+          'description' => 'FROM email address used for receipts generated by contributions to this contribution page.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -625,6 +657,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'cc_receipt',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Receipt cc') ,
+          'description' => 'comma-separated list of email addresses to cc each time a receipt is sent',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -632,6 +665,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'bcc_receipt',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Receipt bcc') ,
+          'description' => 'comma-separated list of email addresses to bcc each time a receipt is sent',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -639,6 +673,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'receipt_text',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Receipt Text') ,
+          'description' => 'text to include above standard receipt info on receipt email. emails are text-only, so do not allow html for now',
           'rows' => 6,
           'cols' => 50,
           'html' => array(
@@ -649,11 +684,13 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Page Active?') ,
+          'description' => 'Is this property active?',
         ) ,
         'footer_text' => array(
           'name' => 'footer_text',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Footer Text') ,
+          'description' => 'Text and html allowed. Displayed at the bottom of the first page of the contribution wizard.',
           'rows' => 6,
           'cols' => 50,
           'html' => array(
@@ -664,33 +701,39 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'amount_block_is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Amount Block Active?') ,
+          'description' => 'Is this property active?',
           'default' => '1',
         ) ,
         'start_date' => array(
           'name' => 'start_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Contribution Page Start Date') ,
+          'description' => 'Date and time that this page starts.',
         ) ,
         'end_date' => array(
           'name' => 'end_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Contribution Page End Date') ,
+          'description' => 'Date and time that this page ends. May be NULL if no defined end date/time',
         ) ,
         'created_id' => array(
           'name' => 'created_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contribution Page Created By') ,
+          'description' => 'FK to civicrm_contact, who created this contribution page',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'created_date' => array(
           'name' => 'created_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Contribution Page Created Date') ,
+          'description' => 'Date and time that contribution page was created.',
         ) ,
         'currency' => array(
           'name' => 'currency',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Contribution Page Currency') ,
+          'description' => '3 character string, value from config setting or input via user.',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
           'default' => 'NULL',
@@ -708,6 +751,7 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'campaign_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contribution Page Campaign ID') ,
+          'description' => 'The campaign for which we are collecting contributions with this page.',
           'FKClassName' => 'CRM_Campaign_DAO_Campaign',
           'pseudoconstant' => array(
             'table' => 'civicrm_campaign',
@@ -719,12 +763,14 @@ class CRM_Contribute_DAO_ContributionPage extends CRM_Core_DAO
           'name' => 'is_share',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Contribution Page Shared?') ,
+          'description' => 'Can people share the contribution page through social media?',
           'default' => '1',
         ) ,
         'is_billing_required' => array(
           'name' => 'is_billing_required',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is billing block required') ,
+          'description' => 'if true - billing block is required for online contribution page',
         ) ,
       );
     }

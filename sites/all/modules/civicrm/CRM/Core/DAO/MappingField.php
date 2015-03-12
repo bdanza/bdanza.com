@@ -202,11 +202,13 @@ class CRM_Core_DAO_MappingField extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Mapping Field ID',
           'required' => true,
         ) ,
         'mapping_id' => array(
           'name' => 'mapping_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Mapping to which this field belongs',
           'required' => true,
           'FKClassName' => 'CRM_Core_DAO_Mapping',
         ) ,
@@ -214,6 +216,7 @@ class CRM_Core_DAO_MappingField extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Mapping field key',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -221,6 +224,7 @@ class CRM_Core_DAO_MappingField extends CRM_Core_DAO
           'name' => 'contact_type',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Contact Type') ,
+          'description' => 'Contact Type in mapping',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'html' => array(
@@ -236,40 +240,48 @@ class CRM_Core_DAO_MappingField extends CRM_Core_DAO
           'name' => 'column_number',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Column Number') ,
+          'description' => 'Column number for mapping set',
           'required' => true,
         ) ,
         'location_type_id' => array(
           'name' => 'location_type_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Location type of this mapping, if required',
           'FKClassName' => 'CRM_Core_DAO_LocationType',
         ) ,
         'phone_type_id' => array(
           'name' => 'phone_type_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Which type of phone does this number belongs.',
         ) ,
         'im_provider_id' => array(
           'name' => 'im_provider_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Which type of IM Provider does this name belong.',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'instant_messenger_service',
+            'optionEditPath' => 'civicrm/admin/options/instant_messenger_service',
           )
         ) ,
         'website_type_id' => array(
           'name' => 'website_type_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Which type of website does this site belong',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'website_type',
+            'optionEditPath' => 'civicrm/admin/options/website_type',
           )
         ) ,
         'relationship_type_id' => array(
           'name' => 'relationship_type_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Relationship type, if required',
           'FKClassName' => 'CRM_Contact_DAO_RelationshipType',
         ) ,
         'relationship_direction' => array(
@@ -283,12 +295,16 @@ class CRM_Core_DAO_MappingField extends CRM_Core_DAO
           'name' => 'grouping',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Grouping') ,
+          'description' => 'Used to group mapping_field records into related sets (e.g. for criteria sets in search builder
+      mappings).
+    ',
           'default' => '1',
         ) ,
         'operator' => array(
           'name' => 'operator',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Operator') ,
+          'description' => 'SQL WHERE operator for search-builder mapping fields (search criteria).',
           'maxlength' => 16,
           'size' => CRM_Utils_Type::TWELVE,
           'html' => array(
@@ -302,6 +318,7 @@ class CRM_Core_DAO_MappingField extends CRM_Core_DAO
           'name' => 'value',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Value') ,
+          'description' => 'SQL WHERE value for search-builder mapping fields.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,

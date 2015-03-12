@@ -284,6 +284,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contribution ID') ,
+          'description' => 'Contribution ID',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_contribution.id',
@@ -295,6 +296,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contact ID') ,
+          'description' => 'FK to Contact ID',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_contribution.contact_id',
@@ -310,6 +312,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'financial_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Type ID') ,
+          'description' => 'FK to Financial Type for (total_amount - non_deductible_amount).',
           'export' => false,
           'where' => 'civicrm_contribution.financial_type_id',
           'headerPattern' => '',
@@ -328,6 +331,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'contribution_page_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contribution Page ID') ,
+          'description' => 'The Contribution Page which triggered this contribution',
           'import' => true,
           'where' => 'civicrm_contribution.contribution_page_id',
           'headerPattern' => '',
@@ -347,17 +351,20 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'payment_instrument_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Payment Instrument ID') ,
+          'description' => 'FK to Payment Instrument',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'payment_instrument',
+            'optionEditPath' => 'civicrm/admin/options/payment_instrument',
           )
         ) ,
         'receive_date' => array(
           'name' => 'receive_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Receive Date') ,
+          'description' => 'when was gift received',
           'import' => true,
           'where' => 'civicrm_contribution.receive_date',
           'headerPattern' => '/receive(.?date)?/i',
@@ -371,6 +378,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'non_deductible_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Non-deductible Amount') ,
+          'description' => 'Portion of total amount which is NOT tax deductible. Equal to total_amount for non-deductible financial types.',
           'precision' => array(
             20,
             2
@@ -388,6 +396,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'total_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Total Amount') ,
+          'description' => 'Total amount of this contribution. Use market value for non-monetary gifts.',
           'required' => true,
           'precision' => array(
             20,
@@ -406,6 +415,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'fee_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Fee Amount') ,
+          'description' => 'actual processor fee if known - may be 0.',
           'precision' => array(
             20,
             2
@@ -423,6 +433,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'net_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Net Amount') ,
+          'description' => 'actual funds transfer amount. total less fees. if processor does not report actual fee during transaction, this is set to total_amount.',
           'precision' => array(
             20,
             2
@@ -440,6 +451,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'trxn_id',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Transaction ID') ,
+          'description' => 'unique transaction id. may be processor id, bank id + trans id, or account number + check number... depending on payment_method',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -455,6 +467,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'invoice_id',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Invoice ID') ,
+          'description' => 'unique invoice id, system generated or passed in',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -470,6 +483,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'currency',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Currency') ,
+          'description' => '3 character string, value from config setting or input via user.',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
           'import' => true,
@@ -492,6 +506,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'cancel_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Cancel Date') ,
+          'description' => 'when was gift cancelled',
           'import' => true,
           'where' => 'civicrm_contribution.cancel_date',
           'headerPattern' => '/cancel(.?date)?/i',
@@ -518,6 +533,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'receipt_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Receipt Date') ,
+          'description' => 'when (if) receipt was sent. populated automatically for online donations w/ automatic receipting',
           'import' => true,
           'where' => 'civicrm_contribution.receipt_date',
           'headerPattern' => '/receipt(.?date)?/i',
@@ -531,6 +547,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'thankyou_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Thank-you Date') ,
+          'description' => 'when (if) was donor thanked',
           'import' => true,
           'where' => 'civicrm_contribution.thankyou_date',
           'headerPattern' => '/thank(s|(.?you))?(.?date)?/i',
@@ -544,6 +561,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'source',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Contribution Source') ,
+          'description' => 'Origin of this Contribution.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -572,6 +590,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'contribution_recur_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Recurring Contribution ID') ,
+          'description' => 'Conditional foreign key to civicrm_contribution_recur id. Each contribution made in connection with a recurring contribution carries a foreign key to the recurring contribution record. This assumes we can track these processor initiated events.',
           'FKClassName' => 'CRM_Contribute_DAO_ContributionRecur',
         ) ,
         'is_test' => array(
@@ -615,12 +634,14 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'contribution_status',
+            'optionEditPath' => 'civicrm/admin/options/contribution_status',
           )
         ) ,
         'address_id' => array(
           'name' => 'address_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contribution Address') ,
+          'description' => 'Conditional foreign key to civicrm_address.id. We insert an address record for each contribution when we have associated billing name and address data.',
           'FKClassName' => 'CRM_Core_DAO_Address',
         ) ,
         'check_number' => array(
@@ -642,6 +663,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'campaign_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Campaign') ,
+          'description' => 'The campaign for which this contribution has been triggered.',
           'import' => true,
           'where' => 'civicrm_contribution.campaign_id',
           'headerPattern' => '',
@@ -661,6 +683,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'creditnote_id',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Credit Note ID') ,
+          'description' => 'unique credit note id, system generated or passed in',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'import' => true,
@@ -676,6 +699,7 @@ class CRM_Contribute_DAO_Contribution extends CRM_Core_DAO
           'name' => 'tax_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Tax Amount') ,
+          'description' => 'Total tax amount of this contribution.',
           'precision' => array(
             20,
             2

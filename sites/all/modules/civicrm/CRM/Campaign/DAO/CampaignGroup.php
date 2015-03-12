@@ -147,11 +147,13 @@ class CRM_Campaign_DAO_CampaignGroup extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Campaign Group id.',
           'required' => true,
         ) ,
         'campaign_id' => array(
           'name' => 'campaign_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Foreign key to the activity Campaign.',
           'required' => true,
           'FKClassName' => 'CRM_Campaign_DAO_Campaign',
           'pseudoconstant' => array(
@@ -164,6 +166,7 @@ class CRM_Campaign_DAO_CampaignGroup extends CRM_Core_DAO
           'name' => 'group_type',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Group Type') ,
+          'description' => 'Type of Group.',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'default' => 'NULL',
@@ -178,6 +181,7 @@ class CRM_Campaign_DAO_CampaignGroup extends CRM_Core_DAO
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Table') ,
+          'description' => 'Name of table where item being referenced is stored.',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'default' => 'NULL',
@@ -185,6 +189,7 @@ class CRM_Campaign_DAO_CampaignGroup extends CRM_Core_DAO
         'entity_id' => array(
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Entity id of referenced table.',
           'default' => 'NULL',
         ) ,
       );

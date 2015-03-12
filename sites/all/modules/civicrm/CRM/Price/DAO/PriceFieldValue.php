@@ -209,12 +209,14 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Price Field Value ID') ,
+          'description' => 'Price Field Value',
           'required' => true,
         ) ,
         'price_field_id' => array(
           'name' => 'price_field_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Price Field') ,
+          'description' => 'FK to civicrm_price_field',
           'required' => true,
           'FKClassName' => 'CRM_Price_DAO_PriceField',
         ) ,
@@ -222,6 +224,7 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Price field option name',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -232,6 +235,7 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'label',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Label') ,
+          'description' => 'Price field option label',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
           'html' => array(
@@ -242,6 +246,7 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Description') ,
+          'description' => '>Price field option description.',
           'rows' => 2,
           'cols' => 60,
           'default' => 'NULL',
@@ -253,6 +258,7 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'amount',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Amount') ,
+          'description' => 'Price field option amount',
           'required' => true,
           'maxlength' => 512,
           'size' => CRM_Utils_Type::EIGHT,
@@ -264,6 +270,7 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'count',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Count') ,
+          'description' => 'Number of participants per field option',
           'default' => 'NULL',
           'html' => array(
             'type' => 'Text',
@@ -273,6 +280,7 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'max_value',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Max Value') ,
+          'description' => 'Max number of participants per field options',
           'default' => 'NULL',
           'html' => array(
             'type' => 'Text',
@@ -282,6 +290,7 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'weight',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Order') ,
+          'description' => 'Order in which the field options should appear',
           'default' => '1',
           'html' => array(
             'type' => 'Text',
@@ -291,6 +300,7 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'membership_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Membership Type') ,
+          'description' => 'FK to Membership Type',
           'default' => 'NULL',
           'FKClassName' => 'CRM_Member_DAO_MembershipType',
           'html' => array(
@@ -301,6 +311,7 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'membership_num_terms',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Membership Num Terms') ,
+          'description' => 'Number of terms for this membership',
           'default' => 'NULL',
           'html' => array(
             'type' => 'Text',
@@ -310,6 +321,7 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'is_default',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Is Default Price Field Option?') ,
+          'description' => 'Is this default price field option',
           'html' => array(
             'type' => 'CheckBox',
           ) ,
@@ -318,12 +330,14 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Price Field Value is Active') ,
+          'description' => 'Is this price field value active',
           'default' => '1',
         ) ,
         'financial_type_id' => array(
           'name' => 'financial_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Type') ,
+          'description' => 'FK to Financial Type.',
           'default' => 'NULL',
           'FKClassName' => 'CRM_Financial_DAO_FinancialType',
           'html' => array(
@@ -339,6 +353,7 @@ class CRM_Price_DAO_PriceFieldValue extends CRM_Core_DAO
           'name' => 'deductible_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Deductible Amount') ,
+          'description' => 'Tax-deductible portion of the amount',
           'required' => true,
           'precision' => array(
             20,

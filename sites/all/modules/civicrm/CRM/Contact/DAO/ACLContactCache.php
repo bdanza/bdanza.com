@@ -141,16 +141,19 @@ class CRM_Contact_DAO_ACLContactCache extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'primary key',
           'required' => true,
         ) ,
         'user_id' => array(
           'name' => 'user_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to civicrm_contact (could be null for anon user)',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to civicrm_contact',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
@@ -158,6 +161,7 @@ class CRM_Contact_DAO_ACLContactCache extends CRM_Core_DAO
           'name' => 'operation',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Operation') ,
+          'description' => 'What operation does this user have permission on?',
           'required' => true,
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,

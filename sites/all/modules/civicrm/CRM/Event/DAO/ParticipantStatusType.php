@@ -157,12 +157,14 @@ class CRM_Event_DAO_ParticipantStatusType extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Participant Status Type ID') ,
+          'description' => 'unique participant status type id',
           'required' => true,
         ) ,
         'participant_status' => array(
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Participant Status') ,
+          'description' => 'non-localized name of the status type',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
           'import' => true,
@@ -175,6 +177,7 @@ class CRM_Event_DAO_ParticipantStatusType extends CRM_Core_DAO
           'name' => 'label',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Participant Status Label') ,
+          'description' => 'localized label for display of this status type',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -182,6 +185,7 @@ class CRM_Event_DAO_ParticipantStatusType extends CRM_Core_DAO
           'name' => 'class',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Participant Status Class') ,
+          'description' => 'the general group of status type this one belongs to',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'html' => array(
@@ -195,33 +199,39 @@ class CRM_Event_DAO_ParticipantStatusType extends CRM_Core_DAO
           'name' => 'is_reserved',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Participant Status Is Reserved?>') ,
+          'description' => 'whether this is a status type required by the system',
         ) ,
         'is_active' => array(
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Participant Status is Active') ,
+          'description' => 'whether this status type is active',
           'default' => '1',
         ) ,
         'is_counted' => array(
           'name' => 'is_counted',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Participant Status Counts?') ,
+          'description' => 'whether this status type is counted against event size limit',
         ) ,
         'weight' => array(
           'name' => 'weight',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Order') ,
+          'description' => 'controls sort order',
           'required' => true,
         ) ,
         'visibility_id' => array(
           'name' => 'visibility_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Participant Status Visibility') ,
+          'description' => 'whether the status type is visible to the public, an implicit foreign key to option_value.value related to the `visibility` option_group',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'visibility',
+            'optionEditPath' => 'civicrm/admin/options/visibility',
           )
         ) ,
       );

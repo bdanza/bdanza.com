@@ -136,12 +136,14 @@ class CRM_Contact_DAO_GroupOrganization extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Group Organization ID') ,
+          'description' => 'Relationship ID',
           'required' => true,
         ) ,
         'group_id' => array(
           'name' => 'group_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Group') ,
+          'description' => 'ID of the group',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Group',
           'html' => array(
@@ -157,6 +159,7 @@ class CRM_Contact_DAO_GroupOrganization extends CRM_Core_DAO
           'name' => 'organization_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Organization') ,
+          'description' => 'ID of the Organization Contact',
           'required' => true,
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,

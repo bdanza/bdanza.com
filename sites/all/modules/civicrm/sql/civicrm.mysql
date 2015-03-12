@@ -2770,6 +2770,7 @@ CREATE TABLE `civicrm_mailing` (
      `resubscribe_id` int unsigned    ,
      `optout_id` int unsigned    COMMENT 'FK to the opt-out component.',
      `name` varchar(128)    COMMENT 'Mailing Name.',
+     `mailing_type` varchar(32)    COMMENT 'differentiate between standalone mailings, A/B tests, and A/B final-winner',
      `from_name` varchar(128)    COMMENT 'From Header of mailing',
      `from_email` varchar(128)    COMMENT 'From Email of mailing',
      `replyto_email` varchar(128)    COMMENT 'Reply-To Email of mailing',
@@ -4227,7 +4228,7 @@ CREATE TABLE `civicrm_price_field` (
      `active_on` datetime   DEFAULT NULL COMMENT 'If non-zero, do not show this field before the date specified',
      `expire_on` datetime   DEFAULT NULL COMMENT 'If non-zero, do not show this field after the date specified',
      `javascript` varchar(255)    COMMENT 'Optional scripting attributes for field',
-     `visibility_id` int unsigned   DEFAULT 1 COMMENT 'Implicit FK to civicrm_option_group with name = \\\'visibility\\\'' 
+     `visibility_id` int unsigned   DEFAULT 1 COMMENT 'Implicit FK to civicrm_option_group with name = \'visibility\'' 
 ,
     PRIMARY KEY ( `id` )
  

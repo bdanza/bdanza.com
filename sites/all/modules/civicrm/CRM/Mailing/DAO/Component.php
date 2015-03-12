@@ -155,6 +155,7 @@ class CRM_Mailing_DAO_Component extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Component Name') ,
+          'description' => 'The name of this component',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
@@ -162,6 +163,7 @@ class CRM_Mailing_DAO_Component extends CRM_Core_DAO
           'name' => 'component_type',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Mailing Component Type') ,
+          'description' => 'Type of Component.',
           'maxlength' => 12,
           'size' => CRM_Utils_Type::TWELVE,
           'html' => array(
@@ -182,6 +184,7 @@ class CRM_Mailing_DAO_Component extends CRM_Core_DAO
           'name' => 'body_html',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Mailing Component Body HTML') ,
+          'description' => 'Body of the component in html format.',
           'rows' => 8,
           'cols' => 80,
           'html' => array(
@@ -192,6 +195,7 @@ class CRM_Mailing_DAO_Component extends CRM_Core_DAO
           'name' => 'body_text',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Body Text') ,
+          'description' => 'Body of the component in text format.',
           'rows' => 8,
           'cols' => 80,
           'html' => array(
@@ -202,11 +206,13 @@ class CRM_Mailing_DAO_Component extends CRM_Core_DAO
           'name' => 'is_default',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Mailing Component is Default?') ,
+          'description' => 'Is this the default component for this component_type?',
         ) ,
         'is_active' => array(
           'name' => 'is_active',
           'type' => CRM_Utils_Type::T_BOOLEAN,
           'title' => ts('Mailing Component Is Active?') ,
+          'description' => 'Is this property active?',
         ) ,
       );
     }

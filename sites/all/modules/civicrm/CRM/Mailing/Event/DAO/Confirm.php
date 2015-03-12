@@ -140,6 +140,7 @@ class CRM_Mailing_Event_DAO_Confirm extends CRM_Core_DAO
           'name' => 'event_subscribe_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing Subscribe ID') ,
+          'description' => 'FK to civicrm_mailing_event_subscribe',
           'required' => true,
           'FKClassName' => 'CRM_Mailing_Event_DAO_Subscribe',
         ) ,
@@ -147,6 +148,7 @@ class CRM_Mailing_Event_DAO_Confirm extends CRM_Core_DAO
           'name' => 'time_stamp',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Confirm Timestamp') ,
+          'description' => 'When this confirmation event occurred.',
           'required' => true,
         ) ,
       );

@@ -257,6 +257,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Pledge ID') ,
+          'description' => 'Pledge ID',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_pledge.id',
@@ -268,6 +269,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Contact ID') ,
+          'description' => 'Foreign key to civicrm_contact.id .',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_pledge.contact_id',
@@ -283,6 +285,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'financial_type_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Type') ,
+          'description' => 'FK to Financial Type',
           'FKClassName' => 'CRM_Financial_DAO_FinancialType',
           'html' => array(
             'type' => 'Select',
@@ -297,12 +300,14 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'contribution_page_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Pledge Contribution Page') ,
+          'description' => 'The Contribution Page which triggered this contribution',
           'FKClassName' => 'CRM_Contribute_DAO_ContributionPage',
         ) ,
         'pledge_amount' => array(
           'name' => 'amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Total Pledged') ,
+          'description' => 'Total pledged amount.',
           'required' => true,
           'precision' => array(
             20,
@@ -321,6 +326,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'original_installment_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Original Installment Amount') ,
+          'description' => 'Original amount for each of the installments.',
           'required' => true,
           'precision' => array(
             20,
@@ -334,6 +340,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'currency',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Pledge Currency') ,
+          'description' => '3 character string, value from config setting or input via user.',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
           'default' => 'NULL',
@@ -351,6 +358,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'frequency_unit',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Pledge Frequency Unit') ,
+          'description' => 'Time units for recurrence of pledge payments.',
           'maxlength' => 8,
           'size' => CRM_Utils_Type::EIGHT,
           'default' => 'month',
@@ -360,12 +368,14 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'pseudoconstant' => array(
             'optionGroupName' => 'recur_frequency_units',
             'keyColumn' => 'name',
+            'optionEditPath' => 'civicrm/admin/options/recur_frequency_units',
           )
         ) ,
         'pledge_frequency_interval' => array(
           'name' => 'frequency_interval',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Pledge Frequency Interval') ,
+          'description' => 'Number of time units for recurrence of pledge payments.',
           'required' => true,
           'default' => '1',
           'html' => array(
@@ -376,6 +386,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'frequency_day',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Pledge day') ,
+          'description' => 'Day in the period when the pledge payment is due e.g. 1st of month, 15th etc. Use this to set the scheduled dates for pledge payments.',
           'required' => true,
           'default' => '3',
           'html' => array(
@@ -386,6 +397,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'installments',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Pledge Number of Installments') ,
+          'description' => 'Total number of payments to be made.',
           'default' => '1',
           'html' => array(
             'type' => 'Text',
@@ -395,6 +407,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'start_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Pledge Start Date') ,
+          'description' => 'The date the first scheduled pledge occurs.',
           'required' => true,
           'html' => array(
             'type' => 'Select Date',
@@ -404,6 +417,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'create_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Pledge Made') ,
+          'description' => 'When this pledge record was created.',
           'required' => true,
           'import' => true,
           'where' => 'civicrm_pledge.create_date',
@@ -418,6 +432,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'acknowledge_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Pledge Acknowledged') ,
+          'description' => 'When a pledge acknowledgement message was sent to the contributor.',
           'html' => array(
             'type' => 'Select Date',
           ) ,
@@ -426,11 +441,13 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'modified_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Pledge Modified Date') ,
+          'description' => 'Last updated date for this pledge record.',
         ) ,
         'cancel_date' => array(
           'name' => 'cancel_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Pledge Cancelled Date') ,
+          'description' => 'Date this pledge was cancelled by contributor.',
           'html' => array(
             'type' => 'Select Date',
           ) ,
@@ -439,6 +456,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'end_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Pledge End Date') ,
+          'description' => 'Date this pledge finished successfully (total pledge payments equal to or greater than pledged amount).',
           'html' => array(
             'type' => 'Select Date',
           ) ,
@@ -447,6 +465,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'max_reminders',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Maximum Number of Reminders') ,
+          'description' => 'The maximum number of payment reminders to send for any given payment.',
           'default' => '1',
           'html' => array(
             'type' => 'Text',
@@ -456,6 +475,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'initial_reminder_day',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Initial Reminder Day') ,
+          'description' => 'Send initial reminder this many days prior to the payment due date.',
           'default' => '5',
           'html' => array(
             'type' => 'Select',
@@ -465,6 +485,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'additional_reminder_day',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Additional Reminder Days') ,
+          'description' => 'Send additional reminder this many days after last one sent, up to maximum number of reminders.',
           'default' => '5',
           'html' => array(
             'type' => 'Text',
@@ -474,6 +495,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'status_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Pledge Status Id') ,
+          'description' => 'Implicit foreign key to civicrm_option_values in the contribution_status option group.',
           'import' => true,
           'where' => 'civicrm_pledge.status_id',
           'headerPattern' => '',
@@ -497,6 +519,7 @@ class CRM_Pledge_DAO_Pledge extends CRM_Core_DAO
           'name' => 'campaign_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Campaign') ,
+          'description' => 'The campaign for which this pledge has been initiated.',
           'import' => true,
           'where' => 'civicrm_pledge.campaign_id',
           'headerPattern' => '',

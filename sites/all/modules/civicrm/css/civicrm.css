@@ -297,6 +297,11 @@ input.crm-form-entityref {
   color: #a9a9a9;
 }
 
+.crm-container .crm-form-time {
+  width: 5em;
+  margin-left: 1em;
+}
+
 .crm-container .crm-form-submit {
   margin: .25em 0.5em 0.25em 0;
 }
@@ -1218,20 +1223,6 @@ input.crm-form-entityref {
 
 .crm-container .underline-effect:before {
   content: "\00BB";
-}
-
-.crm-container div#searchForm {
-  height: auto;
-  width: 100%;
-}
-
-.crm-container div#searchForm table.form-layout {
-  border-spacing: 0;
-}
-
-.crm-container div#searchForm table.form-layout td {
-  padding: 4px;
-  border: 1px solid #DDDDDD;
 }
 
 /* editor specific classes */
@@ -2792,7 +2783,8 @@ div.crm-container form {
 }
 
 /* Date plugin */
-.crm-container input.dateplugin {
+.crm-container input.dateplugin,
+.crm-container input.crm-form-date {
   background: white url(../i/cal.gif) no-repeat scroll right center;
   padding-right: 16px;
   /* so that text doesn't flow on top of icon */
@@ -3310,6 +3302,13 @@ div.m ul#civicrm-menu,
 /*Needed for jstree contextmenu */
 #vakata-contextmenu.jstree-default-context li {
   background: none repeat scroll 0 0 transparent;
+}
+
+/* unset the styling for the li in jstree */
+#tagtree ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
 }
 
 /* Class for successful upgrade */

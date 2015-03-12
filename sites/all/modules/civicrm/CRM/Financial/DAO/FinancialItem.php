@@ -189,6 +189,7 @@ class CRM_Financial_DAO_FinancialItem extends CRM_Core_DAO
           'name' => 'created_date',
           'type' => CRM_Utils_Type::T_TIMESTAMP,
           'title' => ts('Created Date') ,
+          'description' => 'Date and time the item was created',
           'required' => true,
           'default' => 'CURRENT_TIMESTAMP',
         ) ,
@@ -196,11 +197,13 @@ class CRM_Financial_DAO_FinancialItem extends CRM_Core_DAO
           'name' => 'transaction_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Transaction Date') ,
+          'description' => 'Date and time of the source transaction',
           'required' => true,
         ) ,
         'contact_id' => array(
           'name' => 'contact_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to Contact ID of contact the item is from',
           'required' => true,
           'export' => true,
           'where' => 'civicrm_financial_item.contact_id',
@@ -212,6 +215,7 @@ class CRM_Financial_DAO_FinancialItem extends CRM_Core_DAO
           'name' => 'description',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Description') ,
+          'description' => 'Human readable description of this item, to ease display without lookup of source item.',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -219,6 +223,7 @@ class CRM_Financial_DAO_FinancialItem extends CRM_Core_DAO
           'name' => 'amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Amount') ,
+          'description' => 'Total amount of this item',
           'required' => true,
           'precision' => array(
             20,
@@ -229,6 +234,7 @@ class CRM_Financial_DAO_FinancialItem extends CRM_Core_DAO
           'name' => 'currency',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Currency') ,
+          'description' => 'Currency for the amount',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
           'export' => true,
@@ -248,6 +254,7 @@ class CRM_Financial_DAO_FinancialItem extends CRM_Core_DAO
         'financial_account_id' => array(
           'name' => 'financial_account_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to civicrm_financial_account',
           'FKClassName' => 'CRM_Financial_DAO_FinancialAccount',
           'html' => array(
             'type' => 'Select',
@@ -261,6 +268,7 @@ class CRM_Financial_DAO_FinancialItem extends CRM_Core_DAO
         'status_id' => array(
           'name' => 'status_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Payment status: test, paid, part_paid, unpaid (if empty assume unpaid)',
           'export' => true,
           'where' => 'civicrm_financial_item.status_id',
           'headerPattern' => '',
@@ -270,18 +278,21 @@ class CRM_Financial_DAO_FinancialItem extends CRM_Core_DAO
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'financial_item_status',
+            'optionEditPath' => 'civicrm/admin/options/financial_item_status',
           )
         ) ,
         'entity_table' => array(
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Table') ,
+          'description' => 'The table providing the source of this item such as civicrm_line_item',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
         'entity_id' => array(
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'The specific source item that is responsible for the creation of this financial_item',
         ) ,
       );
     }

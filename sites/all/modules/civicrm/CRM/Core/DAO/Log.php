@@ -153,12 +153,14 @@ class CRM_Core_DAO_Log extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Log ID',
           'required' => true,
         ) ,
         'entity_table' => array(
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Table') ,
+          'description' => 'Name of table where item being referenced is stored.',
           'required' => true,
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
@@ -166,22 +168,26 @@ class CRM_Core_DAO_Log extends CRM_Core_DAO
         'entity_id' => array(
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Foreign key to the referenced item.',
           'required' => true,
         ) ,
         'data' => array(
           'name' => 'data',
           'type' => CRM_Utils_Type::T_TEXT,
           'title' => ts('Data') ,
+          'description' => 'Updates does to this object if any.',
         ) ,
         'modified_id' => array(
           'name' => 'modified_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to Contact ID of person under whose credentials this data modification was made.',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'modified_date' => array(
           'name' => 'modified_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Modified Date') ,
+          'description' => 'When was the referenced entity created or modified or deleted.',
         ) ,
       );
     }

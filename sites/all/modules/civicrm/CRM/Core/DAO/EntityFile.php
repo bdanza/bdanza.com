@@ -141,23 +141,27 @@ class CRM_Core_DAO_EntityFile extends CRM_Core_DAO
         'id' => array(
           'name' => 'id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'primary key',
           'required' => true,
         ) ,
         'entity_table' => array(
           'name' => 'entity_table',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Entity Table') ,
+          'description' => 'physical tablename for entity being joined to file, e.g. civicrm_contact',
           'maxlength' => 64,
           'size' => CRM_Utils_Type::BIG,
         ) ,
         'entity_id' => array(
           'name' => 'entity_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to entity table specified in entity_table column.',
           'required' => true,
         ) ,
         'file_id' => array(
           'name' => 'file_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to civicrm_file',
           'required' => true,
           'FKClassName' => 'CRM_Core_DAO_File',
         ) ,

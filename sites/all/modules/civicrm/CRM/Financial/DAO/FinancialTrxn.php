@@ -206,6 +206,7 @@ class CRM_Financial_DAO_FinancialTrxn extends CRM_Core_DAO
         'from_financial_account_id' => array(
           'name' => 'from_financial_account_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to financial_account table.',
           'FKClassName' => 'CRM_Financial_DAO_FinancialAccount',
           'html' => array(
             'type' => 'Select',
@@ -219,6 +220,7 @@ class CRM_Financial_DAO_FinancialTrxn extends CRM_Core_DAO
         'to_financial_account_id' => array(
           'name' => 'to_financial_account_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'FK to financial_financial_account table.',
           'FKClassName' => 'CRM_Financial_DAO_FinancialAccount',
           'html' => array(
             'type' => 'Select',
@@ -233,12 +235,14 @@ class CRM_Financial_DAO_FinancialTrxn extends CRM_Core_DAO
           'name' => 'trxn_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Trxn Date') ,
+          'description' => 'date transaction occurred',
           'default' => 'NULL',
         ) ,
         'total_amount' => array(
           'name' => 'total_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Total Amount') ,
+          'description' => 'amount of transaction',
           'required' => true,
           'precision' => array(
             20,
@@ -249,6 +253,7 @@ class CRM_Financial_DAO_FinancialTrxn extends CRM_Core_DAO
           'name' => 'fee_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Fee Amount') ,
+          'description' => 'actual processor fee if known - may be 0.',
           'precision' => array(
             20,
             2
@@ -258,6 +263,7 @@ class CRM_Financial_DAO_FinancialTrxn extends CRM_Core_DAO
           'name' => 'net_amount',
           'type' => CRM_Utils_Type::T_MONEY,
           'title' => ts('Net Amount') ,
+          'description' => 'actual funds transfer amount. total less fees. if processor does not report actual fee during transaction, this is set to total_amount.',
           'precision' => array(
             20,
             2
@@ -267,6 +273,7 @@ class CRM_Financial_DAO_FinancialTrxn extends CRM_Core_DAO
           'name' => 'currency',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Currency') ,
+          'description' => '3 character string, value from config setting or input via user.',
           'maxlength' => 3,
           'size' => CRM_Utils_Type::FOUR,
           'import' => true,
@@ -288,6 +295,7 @@ class CRM_Financial_DAO_FinancialTrxn extends CRM_Core_DAO
         'trxn_id' => array(
           'name' => 'trxn_id',
           'type' => CRM_Utils_Type::T_STRING,
+          'description' => 'user-specified unique processor transaction id, bank id + trans id,... depending on payment_method',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -295,6 +303,7 @@ class CRM_Financial_DAO_FinancialTrxn extends CRM_Core_DAO
           'name' => 'trxn_result_code',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Trxn Result Code') ,
+          'description' => 'processor result code',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -302,6 +311,7 @@ class CRM_Financial_DAO_FinancialTrxn extends CRM_Core_DAO
           'name' => 'status_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Financial Transaction Status Id') ,
+          'description' => 'pseudo FK to civicrm_option_value of financial_item status option_group',
           'import' => true,
           'where' => 'civicrm_financial_trxn.status_id',
           'headerPattern' => '/status/i',
@@ -311,23 +321,27 @@ class CRM_Financial_DAO_FinancialTrxn extends CRM_Core_DAO
         'payment_processor_id' => array(
           'name' => 'payment_processor_id',
           'type' => CRM_Utils_Type::T_INT,
+          'description' => 'Payment Processor for this financial transaction',
           'FKClassName' => 'CRM_Financial_DAO_PaymentProcessor',
         ) ,
         'financial_trxn_payment_instrument_id' => array(
           'name' => 'payment_instrument_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Payment Instrument') ,
+          'description' => 'FK to payment_instrument option group values',
           'html' => array(
             'type' => 'Select',
           ) ,
           'pseudoconstant' => array(
             'optionGroupName' => 'payment_instrument',
+            'optionEditPath' => 'civicrm/admin/options/payment_instrument',
           )
         ) ,
         'financial_trxn_check_number' => array(
           'name' => 'check_number',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Check Number') ,
+          'description' => 'Check number',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::SIX,
           'html' => array(

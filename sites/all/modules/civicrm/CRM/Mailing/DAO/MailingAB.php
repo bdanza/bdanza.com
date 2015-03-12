@@ -203,6 +203,7 @@ class CRM_Mailing_DAO_MailingAB extends CRM_Core_DAO
           'name' => 'name',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Name') ,
+          'description' => 'Name of the A/B test',
           'maxlength' => 128,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -210,6 +211,7 @@ class CRM_Mailing_DAO_MailingAB extends CRM_Core_DAO
           'name' => 'status',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('Status') ,
+          'description' => 'Status',
           'maxlength' => 32,
           'size' => CRM_Utils_Type::MEDIUM,
           'pseudoconstant' => array(
@@ -220,21 +222,25 @@ class CRM_Mailing_DAO_MailingAB extends CRM_Core_DAO
           'name' => 'mailing_id_a',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing ID (A)') ,
+          'description' => 'The first experimental mailing ("A" condition)',
         ) ,
         'mailing_id_b' => array(
           'name' => 'mailing_id_b',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing ID (B)') ,
+          'description' => 'The second experimental mailing ("B" condition)',
         ) ,
         'mailing_id_c' => array(
           'name' => 'mailing_id_c',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Mailing ID (C)') ,
+          'description' => 'The final, general mailing (derived from A or B)',
         ) ,
         'domain_id' => array(
           'name' => 'domain_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('Domain ID') ,
+          'description' => 'Which site is this mailing for',
         ) ,
         'testing_criteria' => array(
           'name' => 'testing_criteria',
@@ -260,6 +266,7 @@ class CRM_Mailing_DAO_MailingAB extends CRM_Core_DAO
           'name' => 'specific_url',
           'type' => CRM_Utils_Type::T_STRING,
           'title' => ts('URL for Winner Criteria') ,
+          'description' => 'What specific url to track',
           'maxlength' => 255,
           'size' => CRM_Utils_Type::HUGE,
         ) ,
@@ -267,6 +274,7 @@ class CRM_Mailing_DAO_MailingAB extends CRM_Core_DAO
           'name' => 'declare_winning_time',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('Declaration Time') ,
+          'description' => 'In how much time to declare winner',
         ) ,
         'group_percentage' => array(
           'name' => 'group_percentage',
@@ -277,12 +285,14 @@ class CRM_Mailing_DAO_MailingAB extends CRM_Core_DAO
           'name' => 'created_id',
           'type' => CRM_Utils_Type::T_INT,
           'title' => ts('AB Test Created By') ,
+          'description' => 'FK to Contact ID',
           'FKClassName' => 'CRM_Contact_DAO_Contact',
         ) ,
         'created_date' => array(
           'name' => 'created_date',
           'type' => CRM_Utils_Type::T_DATE + CRM_Utils_Type::T_TIME,
           'title' => ts('AB Test Created Date') ,
+          'description' => 'When was this item created',
           'html' => array(
             'type' => 'Select Date',
           ) ,
