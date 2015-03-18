@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";;AAAA,UAAW;EACT,SAAS,EAAE,IAAI;;;ACDjB,IAAK;EACJ,UAAU,EAAE,OAAO;;;AAEpB,UAAW;EACV,UAAU,EAAE,OAAO;EACnB,OAAO,EAAE,IAAI;;;AAGd,SAAU;EACT,UAAU,EAAE,OAAO;EACnB,OAAO,EAAE,IAAI",
+"sources": ["../sass/base/_media.scss","../sass/components/_body.scss"],
+"names": [],
+"file": "bdanza.styles.css"
+}

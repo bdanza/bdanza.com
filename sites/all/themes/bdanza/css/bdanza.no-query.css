@@ -1,5 +1,20 @@
+/* No files to import found in abstractions/**\/* */
+/* line 1, ../sass/base/_media.scss */
 img, media {
-  max-width: 100%;
-}
+  max-width: 100%; }
 
-/* No files to import found in partials/components/**\/* */
+/* line 1, ../sass/components/_body.scss */
+body {
+  background: #95A5A6; }
+
+/* line 4, ../sass/components/_body.scss */
+.l-content {
+  background: #ECF0F1;
+  padding: 10px; }
+
+/* line 9, ../sass/components/_body.scss */
+.l-header {
+  background: #ECF0F1;
+  padding: 10px; }
+
+/*# sourceMappingURL=bdanza.no-query.css.map */
