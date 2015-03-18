@@ -351,7 +351,7 @@ class CRM_Core_DAO_CustomField extends CRM_Core_DAO
         'html_type' => array(
           'name' => 'html_type',
           'type' => CRM_Utils_Type::T_STRING,
-          'title' => ts('Custom Field HTMl Type') ,
+          'title' => ts('Custom Field HTML Type') ,
           'description' => 'HTML types plus several built-in extended types.',
           'required' => true,
           'maxlength' => 32,

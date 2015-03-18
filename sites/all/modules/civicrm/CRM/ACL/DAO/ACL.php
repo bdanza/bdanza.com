@@ -200,7 +200,7 @@ class CRM_ACL_DAO_ACL extends CRM_Core_DAO
         'deny' => array(
           'name' => 'deny',
           'type' => CRM_Utils_Type::T_BOOLEAN,
-          'title' => ts('Deny ACl?') ,
+          'title' => ts('Deny ACL?') ,
           'description' => 'Is this ACL entry Allow  (0) or Deny (1) ?',
           'required' => true,
           'html' => array(
