@@ -8,13 +8,37 @@ body {
   background: #95A5A6; }
 
 /* line 4, ../sass/components/_body.scss */
-.l-content {
+.l-page {
   background: #ECF0F1;
-  padding: 10px; }
+  clear: both; }
 
-/* line 9, ../sass/components/_body.scss */
-.l-header {
-  background: #ECF0F1;
-  padding: 10px; }
+/* line 25, ../sass/bdanza.styles.scss */
+.l-page {
+  margin: 0 auto;
+  width: 960px; }
+
+/* line 30, ../sass/bdanza.styles.scss */
+.l-region--navigation {
+  width: 100%;
+  float: right;
+  margin-left: 0;
+  margin-right: 0;
+  clear: none; }
+
+/* line 34, ../sass/bdanza.styles.scss */
+.l-content {
+  width: 74.57627%;
+  float: left;
+  margin-right: -100%;
+  margin-left: 0;
+  clear: none; }
+
+/* line 39, ../sass/bdanza.styles.scss */
+.l-region--sidebar-first {
+  width: 23.72881%;
+  float: right;
+  margin-left: 0;
+  margin-right: 0;
+  clear: none; }
 
 /*# sourceMappingURL=bdanza.styles.css.map */

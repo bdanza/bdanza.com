@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": ";;AAAA,UAAW;EACT,SAAS,EAAE,IAAI;;;ACDjB,IAAK;EACJ,UAAU,EAAE,OAAO;;;AAEpB,UAAW;EACV,UAAU,EAAE,OAAO;EACnB,OAAO,EAAE,IAAI;;;AAGd,SAAU;EACT,UAAU,EAAE,OAAO;EACnB,OAAO,EAAE,IAAI",
-"sources": ["../sass/base/_media.scss","../sass/components/_body.scss"],
+"mappings": ";;AAAA,UAAW;EACT,SAAS,EAAE,IAAI;;;ACDjB,IAAK;EACJ,UAAU,EAAE,OAAO;;;AAEpB,OAAQ;EACP,UAAU,EAAE,OAAO;EACnB,KAAK,EAAC,IAAI;;;ACmBX,OAAQ;EACP,MAAM,EAAC,MAAM;EACb,KAAK,EAAC,KAAK;;;AAGZ,qBAAsB;ECoElB,KAAY,EC5EN,IAAqD;ED4E3D,KAAY,EClER,KAAwB;EDkE5B,WAAY,EC5DmC,CAAC;ED4DhD,YAAY,ECtDqC,CAAC;EDsDlD,KAAY,ECpB0B,IAAI;;;AF5C9C,UAAU;ECgEN,KAAY,EC5EN,SAAqD;ED4E3D,KAAY,ECnER,IAAU;EDmEd,YAAY,ECjDmC,KAAK;EDiDpD,WAAY,EC1CuC,CAAC;ED0CpD,KAAY,ECpB0B,IAAI;;;AFvC9C,wBAAwB;EC2DpB,KAAY,EC5EN,SAAqD;ED4E3D,KAAY,EClER,KAAwB;EDkE5B,WAAY,EC5DmC,CAAC;ED4DhD,YAAY,ECtDqC,CAAC;EDsDlD,KAAY,ECpB0B,IAAI",
+"sources": ["../sass/base/_media.scss","../sass/components/_body.scss","../sass/bdanza.styles.scss","../../../../../../../../../var/lib/gems/1.9.1/gems/singularitygs-1.6.2/stylesheets/singularitygs/_api.scss","../../../../../../../../../var/lib/gems/1.9.1/gems/singularitygs-1.6.2/stylesheets/singularitygs/api/_isolation.scss"],
 "names": [],
 "file": "bdanza.styles.css"
 }
